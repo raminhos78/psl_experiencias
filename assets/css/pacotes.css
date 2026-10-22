@@ -1,0 +1,645 @@
+/* Porto Santo Line — componentes das páginas de pacotes "Jornada Ideal".
+   Complementa psl.css (CSS original do site). Mobile-first, com os mesmos
+   breakpoints do site: 768px, 1024px e 1440px. */
+
+:root {
+  --pk-texto: #141d25;
+  --pk-cinza: #5a6472;
+  --pk-fundo: #eaeff3;
+  --pk-linha: #d3d8dc;
+  --pk-amarelo: #f5c842;
+  --pk-azul: #153f6a;
+  --pk-azul-jornada: #33507d;
+  --pk-goteira: clamp(0rem, -.827206rem + 3.67647vw, .9375rem);
+  --pk-raio: clamp(0rem, -.661765rem + 2.94118vw, .75rem);
+  --pk-ease: cubic-bezier(.16, 1, .3, 1);
+  --pk-ease-botao: cubic-bezier(.76, 0, .24, 1);
+}
+
+body { background: var(--pk-fundo); color: var(--pk-texto); }
+
+/* ---------- Breadcrumb com ligações (Migalha) ---------- */
+.Migalha-module-scss-module__6Hh3jW__lista a { color: inherit; text-decoration: none; }
+.Migalha-module-scss-module__6Hh3jW__lista a:hover,
+.Migalha-module-scss-module__6Hh3jW__lista a:focus-visible { text-decoration: underline; text-underline-offset: .1875rem; }
+
+/* ---------- Hero do pacote ---------- */
+.pk-hero .HeroPage-module-scss-module__fLgBga__titulo {
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.25rem);
+  line-height: 1.02;
+  max-width: 16ch;
+}
+.pk-hero .HeroPage-module-scss-module__fLgBga__imagem { object-fit: cover; }
+.pk-hero__topo {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+/* Tag do pacote na hero: maior, a amarelo */
+.pk-hero__topo .pk-pilula {
+  background: var(--pk-amarelo); border-color: var(--pk-amarelo); color: var(--pk-texto);
+  font-size: clamp(.875rem, .8rem + .3vw, 1.0625rem); font-weight: 600;
+  padding: .5625rem 1.125rem;
+}
+/* Card branca com o subtítulo e o botão Reservar */
+.pk-hero__lado {
+  display: flex; flex-direction: column; align-items: stretch; gap: 1.25rem;
+  box-sizing: border-box; width: 100%; max-width: 27.5rem;
+  background: var(--pk-amarelo); border-radius: .75rem;
+  padding: 1.25rem;
+}
+/* Card amarela: botão branco e linhas escuras, como as cards activas da Jornada */
+.pk-hero__lado .pk-hero__cta { background: #fff; }
+.pk-hero__lado .pk-hero__acoes { border-color: #141d2533; }
+.pk-hero__lado .pk-hero__desde { color: var(--pk-texto); }
+/* Entrada: a card sobe de baixo quando a página abre */
+@keyframes pk-card-entra {
+  from { opacity: 0; transform: translateY(80px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pk-hero__lado { animation: pk-card-entra 1.2s cubic-bezier(.16, 1, .3, 1) .35s both; }
+@media (prefers-reduced-motion: reduce) { .pk-hero__lado { animation: none; } }
+.pk-hero__lado .HeroPage-module-scss-module__fLgBga__intro {
+  color: var(--pk-texto); text-align: left; max-width: none;
+  font-size: clamp(1.0625rem, .95rem + .45vw, 1.375rem);
+}
+.pk-hero .pk-hero__cta { width: 100%; }
+@media (min-width: 768px) {
+  .pk-hero__lado { padding: 1.75rem; }
+  /* Tablet: título em cima, card por baixo */
+  .pk-hero .HeroPage-module-scss-module__fLgBga__linha { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+}
+/* A hero cresce com o conteúdo (título + card); mínimo = altura do site em cada tamanho */
+.pk-hero { height: auto; min-height: max(57vh, 26.25rem); display: flex; flex-direction: column; }
+.pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { flex: 1 0 auto; height: auto; justify-content: flex-end; }
+.pk-hero .HeroPage-module-scss-module__fLgBga__ancora { position: absolute; top: 100%; left: 0; right: 0; }
+@media (min-width: 768px) { .pk-hero { min-height: max(62vh, 26.25rem); } }
+/* Mobile: a hero ocupa a altura do ecrã abaixo do header */
+@media (max-width: 767.98px) {
+  .pk-hero .HeroPage-module-scss-module__fLgBga__linha { gap: 1.5rem; }
+  .pk-hero { min-height: calc(100vh - var(--altura-header, 121px)); min-height: calc(100svh - var(--altura-header, 121px)); }
+}
+/* Tablet portrait e mobile: título e card a toda a largura */
+@media (max-width: 1023.98px) {
+  .pk-hero .HeroPage-module-scss-module__fLgBga__linha,
+  .pk-hero .HeroPage-module-scss-module__fLgBga__linha > div:first-child { width: 100%; }
+  .pk-hero .HeroPage-module-scss-module__fLgBga__titulo { max-width: none; }
+  .pk-hero__lado { max-width: none; align-self: stretch; }
+}
+@media (min-width: 1024px) {
+  /* Desktop: encostada ao canto inferior direito da hero */
+  .pk-hero__lado {
+    position: absolute; right: var(--pad-hero); bottom: var(--pad-hero); z-index: 2;
+  }
+  .pk-hero .HeroPage-module-scss-module__fLgBga__linha > div:first-child { max-width: calc(100% - 29.5rem - var(--pad-hero)); }
+  .pk-hero .HeroPage-module-scss-module__fLgBga__titulo { font-size: clamp(2.25rem, .4rem + 3.4vw, 4.25rem); }
+  /* Bloco do título encostado em baixo, à altura da base da card */
+  .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { justify-content: flex-end; }
+  /* A hero ocupa o espaço visível abaixo do header e do breadcrumb, para se ver inteira ao abrir */
+  .pk-hero { min-height: max(28rem, calc(100vh - var(--altura-header, 121px) - 4.25rem)); min-height: max(28rem, calc(100svh - var(--altura-header, 121px) - 4.25rem)); }
+  .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { padding-top: min(clamp(6rem, 3rem + 6vw, 10rem), 13vh); padding-bottom: clamp(1.25rem, .5rem + 1.2vw, 2rem); }
+  /* Barra de destaques dentro da hero, em baixo: título e card ficam por cima, alinhados pela base */
+  .pk-hero .pk-hero__lado { position: static; flex: none; }
+  /* Título e card centrados na altura livre da hero, por cima da barra de destaques */
+  .pk-hero .HeroPage-module-scss-module__fLgBga__linha { flex: 1 1 auto; flex-direction: row; align-items: center; justify-content: space-between; gap: 2.5rem; padding-right: 0; }
+  /* Fade escuro em baixo da imagem, por trás da barra de destaques, para legibilidade */
+  .pk-hero .HeroPage-module-scss-module__fLgBga__media::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; pointer-events: none;
+    background: linear-gradient(to bottom, #0a142300 0%, #0a142359 45%, #0a1423bf 100%);
+  }
+  .pk-factos.pk-factos--hero { width: 100%; margin: clamp(1.5rem, 1rem + 1vw, 2.25rem) 0 0; position: relative; z-index: 2;
+    background: transparent; padding: .5rem 0 0; border-radius: 0; border-top: 0; }
+  .pk-factos.pk-factos--hero .pk-factos__item,
+  .pk-factos.pk-factos--hero .pk-factos__item:nth-child(odd),
+  .pk-factos.pk-factos--hero .pk-factos__item:nth-child(even) { border-left-color: #ffffff40; }
+  .pk-factos--hero .pk-factos__valor { color: #fff; }
+  .pk-factos--hero .pk-factos__rotulo { color: #eef2f8; }
+  .pk-factos.pk-factos--fora { display: none; }
+}
+@media (max-width: 1023.98px) {
+  .pk-factos.pk-factos--hero { display: none; }
+}
+/* Rodapé da card da hero: preço à esquerda do botão Reservar (como nas cards da Jornada) */
+.pk-hero__acoes {
+  display: flex; align-items: flex-end; gap: 1.25rem;
+  padding-top: 1.25rem; border-top: 1px solid var(--pk-linha);
+}
+.pk-hero__preco { display: flex; flex-direction: column; gap: .375rem; margin: 0; flex: none; color: var(--pk-texto); }
+.pk-hero__desde { font-family: var(--font-afacad), system-ui, sans-serif; font-size: .8125rem; line-height: 1; color: var(--pk-cinza); }
+.pk-hero__valor {
+  font-family: var(--font-editorial), georgia, serif; font-weight: 400;
+  font-size: clamp(1.75rem, 1.55rem + .5vw, 2rem); line-height: 1; letter-spacing: -.01em; white-space: nowrap;
+  color: var(--pk-texto);
+}
+.pk-hero .pk-hero__acoes .pk-hero__cta { flex: 0 1 15rem; width: auto; min-width: 0; margin-left: auto; gap: 1.5rem; }
+/* Tablet: texto à esquerda, preço e botão à direita */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .pk-hero__lado { flex-direction: row; align-items: center; gap: 1.75rem; }
+  .pk-hero__lado .HeroPage-module-scss-module__fLgBga__intro { flex: 1; min-width: 0; font-size: 1.125rem; }
+  .pk-hero__acoes {
+    flex: none; width: 17rem; flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 1rem;
+    padding: 0 0 0 1.75rem; border-top: 0; border-left: 1px solid var(--pk-linha);
+    align-self: stretch;
+  }
+  .pk-hero .pk-hero__acoes .pk-hero__cta { flex: none; width: 100%; margin-left: 0; }
+}
+.pk-pilula {
+  display: inline-block; font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: .75rem; font-weight: 600; line-height: 1;
+  padding: .3125rem .75rem; border-radius: 62.4375rem;
+  border: 1px solid currentColor;
+}
+.pk-pilula--clara { color: #fff; }
+.pk-pilula--amarela { background: var(--pk-amarelo); border-color: var(--pk-amarelo); color: var(--pk-texto); }
+
+/* ---------- Barra de destaques rápidos ---------- */
+.pk-factos {
+  width: calc(100% - 2 * var(--pk-goteira));
+  box-sizing: border-box;
+  margin: var(--pk-goteira-v, .9375rem) auto 0;
+  background: #fff;
+  border-radius: var(--pk-raio);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: .5rem 1.25rem;
+  list-style: none;
+}
+.pk-factos__item {
+  display: flex; flex-direction: column; gap: .875rem;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid var(--pk-linha);
+}
+.pk-factos__item:nth-child(odd) { padding-right: 1rem; }
+.pk-factos__item:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--pk-linha); }
+.pk-factos__item:nth-last-child(-n+2) { border-bottom: 0; }
+.pk-factos__rotulo {
+  display: flex; align-items: center; gap: .75rem;
+  font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: .875rem; line-height: 1; color: var(--pk-cinza);
+}
+.pk-factos__icone { width: 2.5rem; height: 2.5rem; flex: none; object-fit: contain; }
+.pk-factos__valor {
+  font-family: var(--font-editorial), georgia, serif;
+  font-size: clamp(1.0625rem, .9rem + .45vw, 1.3125rem);
+  line-height: 1.15; margin: 0; color: var(--pk-texto);
+}
+@media (min-width: 768px) {
+  .pk-factos { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 1.875rem 2.5rem; }
+  .pk-factos__item,
+  .pk-factos__item:nth-child(odd),
+  .pk-factos__item:nth-child(even) { padding: .25rem 1.5rem; border-bottom: 0; border-left: 1px solid var(--pk-linha); }
+  .pk-factos__item:first-child { padding-left: 0; border-left: 0; }
+}
+
+/* Entrada ao abrir a página: cada coluna sobe e aparece, em cascata, logo a seguir à card da hero */
+@keyframes pk-facto-entra {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+/* Fica pausada até a barra estar à vista: em desktop isso é logo ao abrir, em mobile quando se chega lá */
+.pk-factos__item { animation: pk-facto-entra 1.2s cubic-bezier(.16, 1, .3, 1) calc(.2s + var(--i, 0) * 90ms) both paused; }
+.pk-factos[data-dentro="true"] .pk-factos__item { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) { .pk-factos__item { animation: none; } }
+
+/* ---------- Layout: conteúdo + coluna de reserva ---------- */
+.pk-layout {
+  width: calc(100% - 2 * var(--pk-goteira));
+  margin: .9375rem auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .9375rem;
+  align-items: start;
+}
+.pk-conteudo { display: flex; flex-direction: column; gap: .9375rem; min-width: 0; }
+/* As secções do site assumem largura total da página; aqui ocupam a coluna. */
+.pk-conteudo > section { width: 100% !important; margin: 0 !important; }
+.pk-conteudo section[class*="InfoCards-module"] { padding-inline: 0; padding-top: clamp(3.75rem, 2rem + 5vw, 6.25rem); padding-bottom: 0; gap: clamp(1.75rem, 1rem + 1.5vw, 2.5rem); }
+.pk-conteudo > section[class*="Locations-module"] { min-height: 0; padding-bottom: clamp(3.125rem, 1rem + 5vw, 6.25rem); }
+
+@media (min-width: 1024px) {
+  .pk-layout { grid-template-columns: minmax(0, 1fr) 22.5rem; }
+}
+@media (min-width: 1440px) {
+  .pk-layout { grid-template-columns: minmax(0, 1fr) clamp(23.75rem, 26vw, 28.75rem); }
+}
+/* Sem widget de reserva: conteúdo a toda a largura. */
+.pk-layout.pk-layout--sem-reserva { grid-template-columns: minmax(0, 1fr); }
+/* Dentro da coluna, as grelhas de 2 colunas só abrem em ecrãs largos. */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+  .pk-layout:not(.pk-layout--sem-reserva) .MediaChecklist-module-scss-module__AJx_Va__grelha { flex-direction: column; }
+  .pk-layout:not(.pk-layout--sem-reserva) .MediaChecklist-module-scss-module__AJx_Va__moldura { aspect-ratio: 698 / 380; flex: none; width: 100%; }
+}
+@media (min-width: 1440px) {
+  .pk-layout:not(.pk-layout--sem-reserva) .InfoCards-module-scss-module__rsmDgW__cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.pk-conteudo .InfoCards-module-scss-module__rsmDgW__cartao { min-height: 0; }
+/* Entrada on scroll como as cards de downloads do site: sobem 380px, uma a seguir à outra */
+.pk-conteudo .InfoCards-module-scss-module__rsmDgW__item { transition: transform 1.4s cubic-bezier(.16, 1, .3, 1) calc(.2s + var(--i, 0) * 80ms); }
+/* Título dos destaques maior (escala dos títulos grandes do site) */
+.pk-conteudo .InfoCards-module-scss-module__rsmDgW__titulo {
+  font-size: clamp(1.875rem, 1.05rem + 3vw, 3.75rem);
+  line-height: 1.06; letter-spacing: -.01em;
+  max-width: 24ch; margin-inline: auto;
+}
+@media (min-width: 1024px) {
+  .pk-conteudo .InfoCards-module-scss-module__rsmDgW__titulo { font-size: clamp(2.5rem, 1.25rem + 2.2vw, 3.125rem); }
+}
+
+/* MediaChecklist: ícone do grupo "não inclui" */
+.pk-visto--nao { color: var(--pk-cinza) !important; }
+/* Os ícones do site são amarelos: na pastilha amarela passam a escuros. */
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__pastilha img {
+  inset: 20% !important; width: 60% !important; height: 60% !important;
+  filter: brightness(0) saturate(100%);
+}
+/* Listas com frases longas: cabeça do grupo por cima dos itens. */
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__grupo {
+  display: flex; flex-direction: column; align-items: stretch; gap: 1.125rem;
+}
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__grupos { flex: none; }
+/* Sem animação on scroll nas listas (o site faz os grupos subirem 380px) */
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__grupo { transform: none !important; transition: none !important; will-change: auto; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__grupo { flex: none; padding-block: 1.5rem; }
+/* Cartões da secção de termos: texto por cima da acção. */
+.pk-conteudo .Locations-module-scss-module__DsK2fW__corpo { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+/* Acima de 1440px os cartões dos termos não esticam: largura máxima e centrados */
+@media (min-width: 1440px) {
+  .pk-conteudo .Locations-module-scss-module__DsK2fW__cartoes { width: 100%; max-width: 60rem; margin-inline: auto; }
+}
+.pk-conteudo .Locations-module-scss-module__DsK2fW__texto { width: 100%; }
+/* Highlights logo por baixo do título; o botão fica no fundo do cartão */
+@media (min-width: 768px) {
+  .pk-conteudo .Locations-module-scss-module__DsK2fW__corpo { flex: auto; }
+  .pk-conteudo .Locations-module-scss-module__DsK2fW__texto { flex: auto; align-self: stretch; }
+  .pk-conteudo .Locations-module-scss-module__DsK2fW__nome { flex: none; }
+}
+/* Botões dos cartões sempre à esquerda (o site encosta-os à direita a partir de 1440px) */
+/* Botões dos cartões: o mesmo botão das cards da Jornada (branco, enche a preto no hover) */
+.pk-conteudo .pk-termos-cta { align-self: flex-start; width: 16.25rem; max-width: 100%; background: #fff; font-size: 1.0625rem; }
+/* Texto dos cartões com o tamanho do parágrafo do módulo Responsabilidade Ambiental */
+.pk-conteudo .Locations-module-scss-module__DsK2fW__valor { font-size: 1rem; line-height: 1.3; }
+.pk-conteudo .Locations-module-scss-module__DsK2fW__detalhes { gap: 1rem; }
+.pk-conteudo .Locations-module-scss-module__DsK2fW__linha { align-items: flex-start; }
+/* Ícone alinhado em cima: a caixa tem a altura da primeira linha do texto */
+.pk-conteudo .Locations-module-scss-module__DsK2fW__icone { font-size: 1rem; height: 1.3em; margin-top: 0; }
+@media (min-width: 1440px) {
+  .pk-conteudo .Locations-module-scss-module__DsK2fW__valor { font-size: clamp(1rem, .55rem + .5vw, 1.125rem); }
+  .pk-conteudo .Locations-module-scss-module__DsK2fW__icone { font-size: clamp(1rem, .55rem + .5vw, 1.125rem); }
+}
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__grupoCabeca { display: flex; align-items: center; justify-content: flex-start; gap: 1rem; flex: none; width: auto; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__itens { flex: none; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__pastilha { order: 0; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__itens { display: flex; flex-direction: column; gap: .75rem; padding: 0; margin: 0; list-style: none; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__item { align-items: flex-start; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__visto { margin-top: .3em; }
+.pk-conteudo .MediaChecklist-module-scss-module__AJx_Va__itemTexto { line-height: 1.35; }
+/* Desktop: "O que está incluído" fica preso e a secção seguinte passa por cima.
+   O JS calcula --pk-empilhar-topo para a secção nunca ficar cortada. */
+.pk-empilhado { display: flex; flex-direction: column; gap: .9375rem; }
+.pk-empilhado > section,
+.pk-empilhado__grupo > section { width: 100% !important; margin: 0 !important; }
+.pk-empilhado__grupo { display: flex; flex-direction: column; gap: .9375rem; }
+@media (min-width: 1024px) {
+  /* Cada secção passa por cima da anterior (ordem de empilhamento crescente) */
+  .pk-empilhado > * { position: relative; }
+  .pk-empilhado > :nth-child(1) { z-index: 1; }
+  .pk-empilhado > :nth-child(2) { z-index: 2; }
+  .pk-empilhado > :nth-child(3) { z-index: 3; }
+  .pk-empilhado > [data-empilhar] { position: sticky; top: var(--pk-empilhar-topo, 0px); transform-origin: 50% var(--pk-empilhar-origem, 0px); will-change: transform, opacity; }
+}
+.pk-conteudo .pk-checklist-cta { width: 16.25rem; max-width: 100%; align-self: flex-start; margin-top: 2rem; }
+@media (max-width: 767.98px) { .pk-conteudo .pk-checklist-cta { width: 100%; } }
+/* "Conhecer o navio": botão das cards da Jornada, preto; enche a amarelo no hover */
+.pk-conteudo .pk-checklist-cta { background: var(--pk-texto); }
+.pk-conteudo .pk-checklist-cta .Journey-module-scss-module__y-uAEq__conteudo { color: #fff; }
+.pk-conteudo .pk-checklist-cta .Journey-module-scss-module__y-uAEq__enchimento { background: var(--pk-amarelo); }
+.pk-conteudo .pk-checklist-cta:hover .Journey-module-scss-module__y-uAEq__conteudo,
+.pk-conteudo .pk-checklist-cta:focus-visible .Journey-module-scss-module__y-uAEq__conteudo { color: var(--pk-texto); }
+.pk-checklist-nota {
+  margin: 1.25rem 0 0; font-family: var(--font-afacad), system-ui, sans-serif;
+  font-size: .875rem; color: var(--pk-cinza); line-height: 1.4;
+}
+
+/* ---------- A experiência a bordo — proposta B (estilo Voyage do /o-navio) ---------- */
+.pk-bordo {
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: var(--pk-raio); background: #0f3a52; color: #fff;
+  padding: 3.125rem 1.25rem;
+}
+.pk-bordo__fundo { position: absolute; inset: 0; z-index: -1; }
+.pk-bordo__mar { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.pk-bordo__navio {
+  position: absolute; height: 115%; width: auto; top: 50%; right: 4%;
+  transform: translateY(-46%); opacity: .55;
+  filter: drop-shadow(0 30px 40px #0008);
+}
+.pk-bordo__veu { position: absolute; inset: 0; background: linear-gradient(90deg, #0a1423d9 0%, #0a14239e 55%, #0a142333 100%); }
+.pk-bordo__conteudo { position: relative; display: flex; flex-direction: column; align-items: flex-start; max-width: 54rem; }
+.pk-bordo__antetitulo { margin: 0 0 .9375rem; font-family: var(--font-afacad), system-ui, sans-serif; font-size: .875rem; line-height: 1; color: #c8d3e3; }
+.pk-bordo__titulo {
+  margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400;
+  font-size: clamp(1.875rem, 1.05rem + 3vw, 3.75rem); line-height: 1.06; letter-spacing: -.01em; max-width: 16ch;
+}
+.pk-bordo__intro { margin: 1.25rem 0 0; max-width: 32rem; font-family: var(--font-editorial), georgia, serif; font-size: clamp(1.125rem, 1rem + .4vw, 1.375rem); line-height: 1.35; color: #eef2f8; }
+
+/* Números do navio: ícone amarelo + número grande, como no Voyage */
+.pk-bordo__dados {
+  list-style: none; margin: 2.5rem 0 0; padding: 0; width: 100%;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.25rem;
+}
+.pk-bordo__dado { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: .875rem; align-items: center; }
+.pk-bordo__icone {
+  grid-row: 1 / span 2; width: 2.75rem; height: 2.75rem; border-radius: .5rem; background: var(--pk-amarelo);
+  display: grid; place-items: center; color: var(--pk-texto); flex: none;
+}
+.pk-bordo__icone img { width: 60%; height: 60%; object-fit: contain; filter: brightness(0) saturate(100%); }
+.pk-bordo__icone svg { width: 1.375rem; height: 1.375rem; }
+.pk-bordo__numero { font-family: var(--font-editorial), georgia, serif; font-size: clamp(2rem, 1.4rem + 2vw, 3.25rem); line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
+.pk-bordo__rotulo { font-family: var(--font-afacad), system-ui, sans-serif; font-size: .875rem; line-height: 1.2; color: #c8d3e3; margin-top: .25rem; }
+
+/* Comodidades em cartões translúcidos */
+.pk-bordo__subtitulo { margin: 3rem 0 1.25rem; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: 1.5rem; line-height: 1.1; }
+.pk-bordo__cartoes { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+.pk-bordo__cartao {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.125rem; border-radius: .75rem;
+  background: #ffffff14; border: 1px solid #ffffff26;
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+}
+.pk-bordo__cartao .pk-bordo__icone { grid-row: auto; }
+.pk-bordo__cartao p { margin: 0; font-family: var(--font-afacad), system-ui, sans-serif; font-size: 1rem; line-height: 1.35; }
+.pk-bordo .pk-bordo__cta { width: auto; min-width: 15rem; margin-top: 2.25rem; }
+.pk-botao--branco { color: var(--pk-texto); }
+
+/* Entrada (data-dentro), como os módulos do site */
+.pk-bordo__dado, .pk-bordo__cartao { opacity: 0; transform: translateY(40px); transition: transform 1.2s var(--pk-ease) calc(.1s + var(--i,0) * .1s), opacity .8s ease calc(.1s + var(--i,0) * .1s); }
+.pk-bordo[data-dentro="true"] .pk-bordo__dado, .pk-bordo[data-dentro="true"] .pk-bordo__cartao { opacity: 1; transform: none; }
+
+@media (min-width: 768px) {
+  .pk-bordo { padding: clamp(3.125rem, 7.44048vw - .446429rem, 6.25rem) 3.125rem; }
+  .pk-bordo__dados { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pk-bordo__cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pk-bordo__cartao { padding: 1.25rem 1.375rem; }
+}
+@media (min-width: 1024px) {
+  .pk-bordo__conteudo { max-width: min(62rem, 72%); }
+  .pk-bordo__navio { opacity: .9; right: 6%; }
+}
+@media (min-width: 1440px) {
+  .pk-bordo { padding-inline: clamp(3.125rem, 3.54167vw - .0625rem, 4.1875rem); }
+}
+@media (max-width: 767.98px) {
+  .pk-bordo__navio { right: -18%; opacity: .35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pk-bordo__dado, .pk-bordo__cartao { opacity: 1; transform: none; transition: none; }
+}
+
+/* Locations (termos): ícones e listas */
+.pk-termos-lista { margin: 0; padding: 0; list-style: none; }
+
+/* ---------- Widget de reserva ---------- */
+.pk-reserva {
+  font-family: var(--font-afacad), system-ui, sans-serif;
+  color: var(--pk-texto);
+}
+.pk-reserva__cartao {
+  background: #fff;
+  border-radius: .75rem;
+  padding: 1.5rem 1.25rem;
+  box-sizing: border-box;
+}
+.pk-reserva__cabeca { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--pk-linha); }
+.pk-reserva__desde { margin: 0; font-size: .8125rem; line-height: 1; color: var(--pk-cinza); }
+.pk-reserva__preco { margin: .5rem 0 0; font-family: var(--font-editorial), georgia, serif; font-size: 2.25rem; line-height: 1; white-space: nowrap; }
+.pk-reserva__preco small { font-family: var(--font-afacad), system-ui, sans-serif; font-size: .875rem; color: var(--pk-cinza); margin-left: .25rem; }
+.pk-reserva__titulo { margin: 0; font-family: var(--font-editorial), georgia, serif; font-size: 1.5rem; line-height: 1.1; font-weight: 400; }
+
+.pk-reserva__campos { display: flex; flex-direction: column; gap: 1.125rem; padding: 1.25rem 0; margin: 0; border: 0; }
+.pk-campo { display: flex; flex-direction: column; gap: .5rem; margin: 0; padding: 0; border: 0; min-width: 0; }
+.pk-campo__rotulo { font-size: .875rem; line-height: 1; color: var(--pk-cinza); padding: 0; }
+.pk-campo__caixa {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  background: var(--pk-fundo); border-radius: .375rem;
+  min-height: 3rem; padding: 0 .9375rem; box-sizing: border-box;
+  font-size: 1rem; color: var(--pk-texto);
+}
+.pk-rota { font-family: var(--font-editorial), georgia, serif; font-size: 1.25rem; }
+.pk-rota svg { width: 1.125rem; height: 1.125rem; flex: none; }
+.pk-datas { display: grid; grid-template-columns: 1fr 1fr; gap: .625rem; }
+.pk-campo input[type="date"] {
+  appearance: none; -webkit-appearance: none;
+  width: 100%; border: 0; background: var(--pk-fundo); border-radius: .375rem;
+  min-height: 3rem; padding: 0 .75rem; box-sizing: border-box;
+  font: inherit; font-size: .9375rem; color: var(--pk-texto);
+}
+.pk-campo input[type="date"]:focus-visible,
+.pk-passo:focus-visible,
+.pk-check input:focus-visible + .pk-check__caixa { outline: 2px solid var(--pk-azul); outline-offset: 2px; }
+.pk-reserva__aviso {
+  margin: 0; display: flex; gap: .5rem; align-items: flex-start;
+  background: #fdf3d3; border-radius: .375rem; padding: .625rem .75rem;
+  font-size: .8125rem; line-height: 1.35;
+}
+.pk-reserva__aviso[hidden] { display: none; }
+.pk-reserva__nota { margin: 0; font-size: .8125rem; line-height: 1.35; color: var(--pk-cinza); }
+
+.pk-pax { list-style: none; margin: 0; padding: 0; border-radius: .375rem; background: var(--pk-fundo); }
+.pk-pax__linha { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .625rem .9375rem; }
+.pk-pax__linha + .pk-pax__linha { border-top: 1px solid #fff; }
+.pk-pax__nome { font-size: 1rem; line-height: 1.1; }
+.pk-pax__nome small { display: block; color: var(--pk-cinza); font-size: .8125rem; margin-top: .125rem; }
+.pk-pax__controlo { display: flex; align-items: center; gap: .75rem; }
+.pk-pax__valor { min-width: 1.25rem; text-align: center; font-size: 1.0625rem; font-variant-numeric: tabular-nums; }
+.pk-passo {
+  width: 2rem; height: 2rem; border-radius: 50%; border: 1px solid var(--pk-texto);
+  background: #fff; color: var(--pk-texto); display: grid; place-items: center;
+  cursor: pointer; padding: 0; transition: background .3s, color .3s;
+}
+.pk-passo svg { width: .75rem; height: .75rem; }
+.pk-passo:hover:not(:disabled) { background: var(--pk-texto); color: #fff; }
+.pk-passo:disabled { opacity: .3; cursor: default; }
+
+.pk-check { display: flex; align-items: flex-start; gap: .625rem; cursor: pointer; font-size: .9375rem; line-height: 1.25; }
+.pk-check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pk-check__caixa {
+  flex: none; width: 1.125rem; height: 1.125rem; margin-top: .0625rem;
+  border: 1px solid var(--pk-texto); border-radius: .25rem; background: #fff;
+  display: grid; place-items: center; transition: background .25s;
+}
+.pk-check__caixa svg { width: .625rem; opacity: 0; transition: opacity .2s; }
+.pk-check input:checked + .pk-check__caixa { background: var(--pk-amarelo); border-color: var(--pk-amarelo); }
+.pk-check input:checked + .pk-check__caixa svg { opacity: 1; }
+.pk-check small { display: block; color: var(--pk-cinza); font-size: .8125rem; margin-top: .125rem; }
+
+/* Botão amarelo do site (btn-sun) com enchimento azul no hover */
+.pk-botao {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  box-sizing: border-box; width: 100%;
+  background: var(--pk-amarelo); color: var(--pk-texto);
+  border-radius: .375rem; padding: 1.0625rem 1.25rem;
+  font-family: var(--font-afacad), system-ui, sans-serif; font-size: 1.0625rem; font-weight: 600; line-height: 1;
+  text-decoration: none; white-space: nowrap;
+}
+.pk-botao__enchimento { position: absolute; inset: 0; z-index: -1; background: var(--pk-texto); transform: translateY(101%); transition: transform .55s var(--pk-ease-botao); }
+.pk-botao__rolo { position: relative; display: inline-flex; overflow: hidden; }
+.pk-botao__a, .pk-botao__b { display: inline-flex; transition: transform .55s var(--pk-ease-botao); }
+.pk-botao__b { position: absolute; inset: 0; transform: translateY(115%); }
+.pk-botao__seta { width: .8125rem; height: .8125rem; transition: transform .55s var(--pk-ease-botao); }
+.pk-botao:hover, .pk-botao:focus-visible { color: #fff; transition: color .55s var(--pk-ease-botao); }
+.pk-botao:hover .pk-botao__enchimento, .pk-botao:focus-visible .pk-botao__enchimento { transform: translateY(0); }
+.pk-botao:hover .pk-botao__a, .pk-botao:focus-visible .pk-botao__a { transform: translateY(-115%); }
+.pk-botao:hover .pk-botao__b, .pk-botao:focus-visible .pk-botao__b { transform: translateY(0); }
+.pk-botao--branco { background: #fff; }
+
+.pk-garantias { list-style: none; margin: 1.25rem 0 0; padding: 1.25rem 0 0; border-top: 1px solid var(--pk-linha); display: flex; flex-direction: column; gap: .75rem; }
+.pk-garantias li { display: flex; align-items: center; gap: .75rem; font-size: .9375rem; line-height: 1.2; }
+.pk-garantias__icone { flex: none; width: 2.25rem; height: 2.25rem; border-radius: .5rem; background: var(--pk-amarelo); display: grid; place-items: center; }
+.pk-garantias__icone svg { width: 1.125rem; height: 1.125rem; }
+
+/* Barra fixa (mobile / tablet) */
+.pk-reserva__barra { display: none; }
+
+@media (max-width: 1023.98px) {
+  body.pk-tem-reserva { padding-bottom: 5.5rem; }
+  .pk-reserva {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    pointer-events: none;
+  }
+  .pk-reserva__barra {
+    pointer-events: auto;
+    display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+    background: #fff; padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+    border-radius: .75rem .75rem 0 0;
+    box-shadow: 0 -12px 40px #0a12201f;
+    position: relative; z-index: 2;
+  }
+  .pk-reserva__toggle {
+    display: flex; flex-direction: column; align-items: flex-start; gap: .25rem;
+    background: none; border: 0; padding: 0; text-align: left; cursor: pointer; color: inherit; font: inherit;
+  }
+  .pk-reserva__toggle .pk-reserva__preco { font-size: 1.625rem; margin: 0; }
+  .pk-reserva__toggle-texto { display: inline-flex; align-items: center; gap: .375rem; font-size: .8125rem; color: var(--pk-cinza); }
+  .pk-reserva__toggle-texto svg { width: .625rem; transition: transform .4s var(--pk-ease); }
+  .pk-reserva[data-aberto="true"] .pk-reserva__toggle-texto svg { transform: rotate(180deg); }
+  .pk-reserva__barra .pk-botao { width: auto; flex: none; padding: .9375rem 1.125rem; font-size: 1rem; }
+
+  .pk-reserva__cartao {
+    pointer-events: auto;
+    position: absolute; left: 0; right: 0; bottom: 100%;
+    margin-bottom: -.75rem; padding-bottom: 1.75rem;
+    max-height: calc(100dvh - 9rem); overflow-y: auto; overscroll-behavior: contain;
+    border-radius: .75rem .75rem 0 0;
+    box-shadow: 0 -12px 40px #0a12201f;
+    transform: translateY(calc(100% + 6rem)); visibility: hidden;
+    transition: transform .7s var(--pk-ease), visibility 0s linear .7s;
+  }
+  .pk-reserva[data-aberto="true"] .pk-reserva__cartao {
+    transform: translateY(0); visibility: visible;
+    transition: transform .7s var(--pk-ease), visibility 0s;
+  }
+  .pk-reserva__cartao .pk-reserva__cabeca .pk-reserva__preco-bloco { display: none; }
+  .pk-reserva__cartao > .pk-botao { display: none; }
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .pk-reserva__barra, .pk-reserva__cartao { width: calc(100% - 2 * var(--pk-goteira)); margin-inline: auto; }
+  .pk-reserva__cartao { left: var(--pk-goteira); right: var(--pk-goteira); width: auto; padding-inline: 2rem; }
+  .pk-reserva__barra { padding-inline: 2rem; }
+}
+@media (min-width: 1024px) {
+  .pk-reserva { position: sticky; top: calc(var(--altura-header, 81px) * (1 - var(--header-escondido, 0)) + .9375rem); transition: top .5s cubic-bezier(.4,0,.2,1); }
+  .pk-reserva__cartao {
+    padding: 1.5rem;
+    max-height: calc(100vh - var(--altura-header, 81px) * (1 - var(--header-escondido, 0)) - 1.875rem);
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  }
+  .pk-reserva__cabeca { padding-bottom: 1rem; }
+  .pk-reserva__campos { gap: .875rem; padding: 1rem 0; }
+  .pk-pax__linha { padding: .4375rem .875rem; }
+  .pk-garantias { flex-direction: row; gap: 1rem; margin-top: 1rem; padding-top: 1rem; }
+  .pk-garantias li { flex: 1; font-size: .875rem; gap: .5rem; }
+  .pk-garantias__icone { width: 2rem; height: 2rem; }
+}
+@media (min-width: 1440px) {
+  .pk-reserva__cartao { padding: 1.75rem 1.875rem; }
+}
+
+/* ---------- Outras Jornadas Ideais: módulo Journey da home ---------- */
+/* Na home a secção sobe por cima da hero (margem negativa); aqui não. */
+.pk-jornada.Journey-module-scss-module__y-uAEq__seccao { margin-top: .9375rem; }
+.pk-jornada .Journey-module-scss-module__y-uAEq__imagem,
+.pk-jornada .Journey-module-scss-module__y-uAEq__imagemFundo { object-fit: cover; }
+.pk-jornada .Journey-module-scss-module__y-uAEq__botao .Journey-module-scss-module__y-uAEq__enchimento { position: absolute; inset: 0; }
+.pk-jornada .Journey-module-scss-module__y-uAEq__cartao[data-activo="false"] .Journey-module-scss-module__y-uAEq__botao { pointer-events: auto; }
+.pk-jornada img { -webkit-user-drag: none; user-select: none; }
+
+/* Grelha de pacotes (página índice) */
+.pk-grelha {
+  width: calc(100% - 2 * var(--pk-goteira));
+  margin: .9375rem auto 0;
+  list-style: none; padding: 0;
+  display: grid; gap: .9375rem;
+  grid-template-columns: minmax(0, 1fr);
+  --largura: clamp(18.75rem, 15.4412rem + 14.7059vw, 22.5rem);
+}
+/* Todas as cards da mesma linha com a mesma altura */
+.pk-grelha { grid-auto-rows: 1fr; }
+.pk-grelha > li { display: flex; }
+.pk-grelha .Journey-module-scss-module__y-uAEq__cartao { height: auto; min-height: calc(var(--largura) * 1.2783); flex: 1; width: 100%; }
+/* Imagem + preço + botão encostados ao fundo: as imagens ficam alinhadas entre cards */
+.pk-grelha .Journey-module-scss-module__y-uAEq__moldura { margin-top: auto; }
+.pk-grelha .Journey-module-scss-module__y-uAEq__descricao { margin-bottom: 1.5rem; }
+.pk-grelha .Journey-module-scss-module__y-uAEq__rodape { margin-top: 0; }
+.pk-grelha .Journey-module-scss-module__y-uAEq__cartao:hover { background: var(--pk-amarelo); }
+.pk-grelha .Journey-module-scss-module__y-uAEq__cartao:hover .Journey-module-scss-module__y-uAEq__botao { background: #fff; }
+.pk-grelha .Journey-module-scss-module__y-uAEq__imagem { object-fit: cover; }
+@media (min-width: 768px) { .pk-grelha { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1440px) { .pk-grelha { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.pk-espaco-rodape { height: .9375rem; }
+
+/* Indicador de resolução (revisão) */
+.pk-resolucao {
+  position: fixed; left: .75rem; bottom: .75rem; z-index: 100;
+  padding: .4375rem .75rem; border-radius: 62.4375rem;
+  background: #141d25e6; color: #fff;
+  font-family: var(--font-afacad), system-ui, sans-serif; font-size: .75rem; font-weight: 500; line-height: 1;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pk-botao *, .pk-reserva__cartao { transition: none !important; }
+}
+
+/* ---------- Teste de cores da hero (revisão) ---------- */
+.pk-teste-cores {
+  position: fixed; right: .75rem; bottom: .75rem; z-index: 100;
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: .625rem .75rem; border-radius: .75rem;
+  background: #141d25e6; color: #fff;
+  font-family: var(--font-afacad), system-ui, sans-serif; font-size: .75rem; line-height: 1;
+}
+.pk-teste-cores__grupo { display: flex; align-items: center; gap: .375rem; }
+.pk-teste-cores__titulo { min-width: 6.5rem; opacity: .8; }
+.pk-teste-cores button {
+  width: 1.5rem; height: 1.5rem; border-radius: 50%; padding: 0; cursor: pointer;
+  background: var(--amostra); border: 2px solid #ffffff59;
+}
+.pk-teste-cores button[aria-pressed="true"] { border-color: var(--pk-amarelo); box-shadow: 0 0 0 2px #141d25; }
+
+/* Véu da imagem */
+.pk-hero[data-teste-veu="reforcado"] .HeroPage-module-scss-module__fLgBga__scrim { background: linear-gradient(#0a1423a6 0%, #0a142380 45%, #0a1423b3 100%); }
+.pk-hero[data-teste-veu="esquerda"] .HeroPage-module-scss-module__fLgBga__scrim { background: linear-gradient(90deg, #0a1423d9 0%, #0a142380 45%, #0a142333 100%); }
+.pk-hero[data-teste-veu="base"] .HeroPage-module-scss-module__fLgBga__scrim { background: linear-gradient(#0a142340 0%, #0a142366 40%, #0a1423e0 100%); }
+.pk-hero[data-teste-veu="uniforme"] .HeroPage-module-scss-module__fLgBga__scrim { background: #0a142399; }
+
+/* Cor da card */
+.pk-hero[data-teste-card="branco"] .pk-hero__lado { background: #fff; }
+.pk-hero[data-teste-card="branco"] .pk-hero__lado .pk-hero__cta { background: var(--pk-amarelo); }
+.pk-hero[data-teste-card="azul-claro"] .pk-hero__lado { background: #d7dde5; }
+.pk-hero[data-teste-card="azul-escuro"] .pk-hero__lado { background: var(--pk-azul); }
+.pk-hero[data-teste-card="preto"] .pk-hero__lado { background: var(--pk-texto); }
+.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__lado :is(.HeroPage-module-scss-module__fLgBga__intro, .pk-hero__valor, .pk-hero__desde) { color: #fff; }
+.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__acoes { border-color: #ffffff33; }
+.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__lado .pk-hero__cta { background: var(--pk-amarelo); }

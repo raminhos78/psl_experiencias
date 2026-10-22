@@ -548,6 +548,64 @@ def jornadas(actual):
 </section>'''
 
 
+# ---------------------------------------------------------------------------
+# Versão 2 (proposta alternativa da hero e dos 3 módulos seguintes)
+# ---------------------------------------------------------------------------
+def hero_v2(p):
+    """Hero dividida: texto, destaques e preço à esquerda numa caixa branca; imagem arredondada à direita."""
+    rotulos = [('Duração', 'duracao'), ('Navio', 'navio'), ('Ponto de partida', 'ponto-partida'), ('Modalidade', 'modalidade')]
+    factos_html = ''.join(
+        f'<li class="pk2-hero__facto" style="--i:{i}"><img alt="" src="assets/img/icons/{ic}.svg"><span><span class="pk2-hero__rotulo">{r}</span>'
+        f'<span class="pk2-hero__valor">{e(v)}</span></span></li>'
+        for i, ((r, ic), v) in enumerate(zip(rotulos, p['factos'])))
+    return f'''<section aria-labelledby="pk-titulo" class="pk2-hero" data-dentro="false" id="section-0">
+<div class="pk2-hero__texto">
+<span class="pk-pilula pk-pilula--amarela">{e(p['tag'])}</span>
+<h1 class="pk2-hero__titulo" id="pk-titulo">{e(p['titulo'])}</h1>
+<p class="pk2-hero__intro">{e(p['subtitulo'])}</p>
+<ul class="pk2-hero__factos" aria-label="Destaques rápidos">{factos_html}</ul>
+<div class="pk2-hero__acoes"><p class="pk2-hero__preco"><span>Desde</span><strong>{p['preco']} €</strong></p>{botao_jornada('Reservar', BOOKING + '?pacote=' + p['slug'], 'pk2-cta')}</div>
+</div>
+<div class="pk2-hero__media"><img alt="{e(p['alt_hero'])}" decoding="async" fetchpriority="high" src="assets/img/{p['img_hero']}" style="object-position:{p['pos_hero']}"></div>
+</section>'''
+
+
+def destaques_v2(p):
+    """Destaques numerados sobre fundo escuro, título à esquerda."""
+    itens = ''.join(
+        f'<li class="pk2-dest__item" style="--i:{i}"><span class="pk2-dest__num">{i + 1:02d}</span>'
+        f'<h3 class="pk2-dest__titulo">{e(t)}</h3><p class="pk2-dest__texto">{e(d)}</p></li>'
+        for i, (t, d) in enumerate(p['destaques']))
+    return f'''<section aria-labelledby="section-1-titulo" class="pk2-dest" data-dentro="false" id="section-1">
+<div class="pk2-dest__cabeca"><p class="pk2-dest__ante">Porque vai gostar</p><h2 class="pk2-dest__h2" id="section-1-titulo">{e(p['titulo_card'])}</h2></div>
+<ol class="pk2-dest__lista">{itens}</ol>
+</section>'''
+
+
+def incluido_v2(p):
+    """Imagem à esquerda; "incluído" e "não inclui" empilhados à direita (em ecrãs pequenos, imagem por cima)."""
+    def lista(itens, marca, cls):
+        return ''.join(f'<li>{marca.format(cls=cls)}<span>{e(x)}</span></li>' for x in itens)
+    return f'''<section aria-labelledby="section-2-titulo" class="pk2-inc" data-dentro="false" id="section-2">
+<div class="pk2-inc__corpo">
+<div class="pk2-inc__media"><img alt="{e(p['alt_media'])}" loading="lazy" src="assets/img/{p['img_media']}">
+<div class="pk2-inc__cabeca"><h2 class="pk2-inc__h2" id="section-2-titulo">O que está incluído</h2><p class="pk2-inc__intro">Tudo o que precisa para aproveitar o Porto Santo, numa única reserva.</p></div></div>
+<div class="pk2-inc__paineis">
+<div class="pk2-inc__painel pk2-inc__painel--sim"><h3>Incluído no pacote</h3><ul>{lista(p['inclui'], VISTO, 'pk2-inc__marca')}</ul></div>
+<div class="pk2-inc__painel pk2-inc__painel--nao"><h3>Não inclui</h3><ul>{lista(p['nao_inclui'], CRUZ, 'pk2-inc__marca')}</ul></div>
+</div>
+</div>
+</section>'''
+
+
+def troca_versao(p, versao):
+    """Selector flutuante para comparar as duas versões da página."""
+    actual = ' aria-current="page"'
+    a = f'<a href="{p["slug"]}.html"{actual if versao == 1 else ""}>Versão 1</a>'
+    b = f'<a href="{p["slug"]}-v2.html"{actual if versao == 2 else ""}>Versão 2</a>'
+    return f'<nav class="pk-versoes" aria-label="Versões da página">{a}{b}</nav>'
+
+
 def k_(nomes):
     return k('jornada', nomes)
 
@@ -587,6 +645,25 @@ def pagina(titulo, descricao, corpo, classe_body=''):
 '''
 
 
+def pagina_pacote_v2(p):
+    corpo = '\n'.join([
+        migalha([('Início', SITE + '/'), ('Pacotes & Experiências', 'index.html'), (p['tag'], None)]),
+        hero_v2(p),
+        '<div class="pk-layout pk-layout--sem-reserva pk2">',
+        '<div class="pk-conteudo">',
+        destaques_v2(p),
+        incluido_v2(p),
+        bordo_b('section-3'),
+        locais_termos('section-4'),
+        faq('section-5', p['faq'] + FAQ_COMUM),
+        '</div>',
+        '</div>',
+        jornadas(p),
+        troca_versao(p, 2),
+    ])
+    return pagina(p['tag'], p['subtitulo'], corpo, 'pk-v2')
+
+
 def pagina_pacote(p):
     corpo = '\n'.join([
         migalha([('Início', SITE + '/'), ('Pacotes & Experiências', 'index.html'), (p['tag'], None)]),
@@ -615,6 +692,7 @@ def pagina_pacote(p):
         reserva(p) if MOSTRAR_RESERVA else '',
         '</div>',
         jornadas(p),
+        troca_versao(p, 1),
     ])
     return pagina(p['tag'], p['subtitulo'], corpo, 'pk-tem-reserva' if MOSTRAR_RESERVA else '')
 
@@ -636,7 +714,8 @@ def main():
     (RAIZ / 'index.html').write_text(pagina_indice())
     for p in PACOTES:
         (RAIZ / f"{p['slug']}.html").write_text(pagina_pacote(p))
-    print('Geradas:', 'index.html', *[p['slug'] + '.html' for p in PACOTES])
+        (RAIZ / f"{p['slug']}-v2.html").write_text(pagina_pacote_v2(p))
+    print('Geradas:', 'index.html', *[p['slug'] + '.html' for p in PACOTES], *[p['slug'] + '-v2.html' for p in PACOTES])
 
 
 if __name__ == '__main__':

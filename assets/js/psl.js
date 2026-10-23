@@ -540,7 +540,7 @@
         ['base', 'Mais escuro em baixo', 'linear-gradient(#0a142340,#0a142366 40%,#0a1423e0)'],
         ['uniforme', 'Uniforme 60%', '#0a142399']
       ]],
-      ['card', 'Cor da card', 'amarelo', [
+      ['card', 'Cor da card', 'branco', [
         ['amarelo', 'Amarelo', '#f5c842'],
         ['branco', 'Branco', '#ffffff'],
         ['azul-claro', 'Azul-claro', '#d7dde5'],

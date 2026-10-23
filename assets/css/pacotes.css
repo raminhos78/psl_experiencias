@@ -25,7 +25,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 
 /* ---------- Hero do pacote ---------- */
 .pk-hero .HeroPage-module-scss-module__fLgBga__titulo {
-  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.25rem);
+  font-size: clamp(2.625rem, 1.4rem + 4.3vw, 5.125rem);
   line-height: 1.02;
   max-width: 16ch;
 }
@@ -40,17 +40,15 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   font-size: clamp(.875rem, .8rem + .3vw, 1.0625rem); font-weight: 600;
   padding: .5625rem 1.125rem;
 }
-/* Card branca com o subtítulo e o botão Reservar */
+/* Card branca com os destaques e o botão Reservar */
 .pk-hero__lado {
   display: flex; flex-direction: column; align-items: stretch; gap: 1.25rem;
   box-sizing: border-box; width: 100%; max-width: 27.5rem;
-  background: var(--pk-amarelo); border-radius: .75rem;
+  background: #fff; border-radius: .75rem;
   padding: 1.25rem;
 }
-/* Card amarela: botão branco e linhas escuras, como as cards activas da Jornada */
-.pk-hero__lado .pk-hero__cta { background: #fff; }
-.pk-hero__lado .pk-hero__acoes { border-color: #141d2533; }
-.pk-hero__lado .pk-hero__desde { color: var(--pk-texto); }
+/* Card branca: botão Reservar amarelo */
+.pk-hero__lado .pk-hero__cta { background: var(--pk-amarelo); }
 /* Entrada: a card sobe de baixo quando a página abre */
 @keyframes pk-card-entra {
   from { opacity: 0; transform: translateY(80px); }
@@ -58,8 +56,9 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 }
 .pk-hero__lado { animation: pk-card-entra 1.2s cubic-bezier(.16, 1, .3, 1) .35s both; }
 @media (prefers-reduced-motion: reduce) { .pk-hero__lado { animation: none; } }
-.pk-hero__lado .HeroPage-module-scss-module__fLgBga__intro {
-  color: var(--pk-texto); text-align: left; max-width: none;
+/* Descritivo por baixo do headline, sobre a imagem */
+.pk-hero .HeroPage-module-scss-module__fLgBga__intro {
+  margin-top: clamp(1rem, .75rem + .6vw, 1.5rem); text-align: left; max-width: 36rem;
   font-size: clamp(1.0625rem, .95rem + .45vw, 1.375rem);
 }
 .pk-hero .pk-hero__cta { width: 100%; }
@@ -91,32 +90,15 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
     position: absolute; right: var(--pad-hero); bottom: var(--pad-hero); z-index: 2;
   }
   .pk-hero .HeroPage-module-scss-module__fLgBga__linha > div:first-child { max-width: calc(100% - 29.5rem - var(--pad-hero)); }
-  .pk-hero .HeroPage-module-scss-module__fLgBga__titulo { font-size: clamp(2.25rem, .4rem + 3.4vw, 4.25rem); }
+  .pk-hero .HeroPage-module-scss-module__fLgBga__titulo { font-size: clamp(2.625rem, .5rem + 4.1vw, 5.125rem); }
   /* Bloco do título encostado em baixo, à altura da base da card */
   .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { justify-content: flex-end; }
   /* A hero ocupa o espaço visível abaixo do header e do breadcrumb, para se ver inteira ao abrir */
   .pk-hero { min-height: max(28rem, calc(100vh - var(--altura-header, 121px) - 4.25rem)); min-height: max(28rem, calc(100svh - var(--altura-header, 121px) - 4.25rem)); }
   .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { padding-top: min(clamp(6rem, 3rem + 6vw, 10rem), 13vh); padding-bottom: clamp(1.25rem, .5rem + 1.2vw, 2rem); }
-  /* Barra de destaques dentro da hero, em baixo: título e card ficam por cima, alinhados pela base */
+  /* Título e card lado a lado, centrados na altura livre da hero */
   .pk-hero .pk-hero__lado { position: static; flex: none; }
-  /* Título e card centrados na altura livre da hero, por cima da barra de destaques */
   .pk-hero .HeroPage-module-scss-module__fLgBga__linha { flex: 1 1 auto; flex-direction: row; align-items: center; justify-content: space-between; gap: 2.5rem; padding-right: 0; }
-  /* Fade escuro em baixo da imagem, por trás da barra de destaques, para legibilidade */
-  .pk-hero .HeroPage-module-scss-module__fLgBga__media::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; pointer-events: none;
-    background: linear-gradient(to bottom, #0a142300 0%, #0a142359 45%, #0a1423bf 100%);
-  }
-  .pk-factos.pk-factos--hero { width: 100%; margin: clamp(1.5rem, 1rem + 1vw, 2.25rem) 0 0; position: relative; z-index: 2;
-    background: transparent; padding: .5rem 0 0; border-radius: 0; border-top: 0; }
-  .pk-factos.pk-factos--hero .pk-factos__item,
-  .pk-factos.pk-factos--hero .pk-factos__item:nth-child(odd),
-  .pk-factos.pk-factos--hero .pk-factos__item:nth-child(even) { border-left-color: #ffffff40; }
-  .pk-factos--hero .pk-factos__valor { color: #fff; }
-  .pk-factos--hero .pk-factos__rotulo { color: #eef2f8; }
-  .pk-factos.pk-factos--fora { display: none; }
-}
-@media (max-width: 1023.98px) {
-  .pk-factos.pk-factos--hero { display: none; }
 }
 /* Rodapé da card da hero: preço à esquerda do botão Reservar (como nas cards da Jornada) */
 .pk-hero__acoes {
@@ -131,12 +113,11 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   color: var(--pk-texto);
 }
 .pk-hero .pk-hero__acoes .pk-hero__cta { flex: 0 1 15rem; width: auto; min-width: 0; margin-left: auto; gap: 1.5rem; }
-/* Tablet: texto à esquerda, preço e botão à direita */
+/* Tablet: destaques à esquerda, preço e botão à direita */
 @media (min-width: 768px) and (max-width: 1023.98px) {
-  .pk-hero__lado { flex-direction: row; align-items: center; gap: 1.75rem; }
-  .pk-hero__lado .HeroPage-module-scss-module__fLgBga__intro { flex: 1; min-width: 0; font-size: 1.125rem; }
+  .pk-hero__lado { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; align-items: center; gap: 1.75rem; }
   .pk-hero__acoes {
-    flex: none; width: 17rem; flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 1rem;
+    flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 1rem;
     padding: 0 0 0 1.75rem; border-top: 0; border-left: 1px solid var(--pk-linha);
     align-self: stretch;
   }
@@ -189,6 +170,21 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   .pk-factos__item:nth-child(even) { padding: .25rem 1.5rem; border-bottom: 0; border-left: 1px solid var(--pk-linha); }
   .pk-factos__item:first-child { padding-left: 0; border-left: 0; }
 }
+/* Destaques dentro da card da hero, por cima do preço: grelha 2×2 */
+.pk-factos.pk-factos--card {
+  width: 100%; margin: 0; padding: 0; border-radius: 0; background: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.pk-factos--card .pk-factos__item,
+.pk-factos--card .pk-factos__item:nth-child(odd),
+.pk-factos--card .pk-factos__item:nth-child(even) { gap: .625rem; padding: 1rem 0; border-bottom: 1px solid var(--pk-linha); border-left: 0; animation: none; }
+.pk-factos--card .pk-factos__item:nth-child(odd) { padding-right: 1rem; }
+.pk-factos--card .pk-factos__item:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--pk-linha); }
+.pk-factos--card .pk-factos__item:nth-last-child(-n+2) { border-bottom: 0; }
+.pk-factos--card .pk-factos__item:nth-child(-n+2) { padding-top: 0; }
+.pk-factos--card .pk-factos__rotulo { gap: .5rem; }
+.pk-factos--card .pk-factos__icone { width: 1.75rem; height: 1.75rem; }
+.pk-factos--card .pk-factos__valor { font-size: clamp(1.0625rem, .95rem + .3vw, 1.25rem); }
 
 /* Entrada ao abrir a página: cada coluna sobe e aparece, em cascata, logo a seguir à card da hero */
 @keyframes pk-facto-entra {
@@ -213,7 +209,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 /* As secções do site assumem largura total da página; aqui ocupam a coluna. */
 .pk-conteudo > section { width: 100% !important; margin: 0 !important; }
 /* Destaques: caixa branca (como a do "O que está incluído") com cards da cor de fundo */
-.pk-conteudo section[class*="InfoCards-module"] { background: #fff; border-radius: var(--raio-seccao); padding: clamp(2.5rem, 1.25rem + 4vw, 6.25rem) clamp(1.25rem, -1rem + 5vw, 4.6875rem) clamp(2rem, 1.25rem + 2vw, 3.5rem); gap: clamp(1.75rem, 1rem + 1.5vw, 2.5rem); }
+.pk-conteudo section[class*="InfoCards-module"] { background: #fff; border-radius: var(--raio-seccao); padding: clamp(3.5rem, 1.5rem + 5vw, 7.5rem) clamp(1.25rem, -1rem + 5vw, 4.6875rem); gap: clamp(1.75rem, 1rem + 1.5vw, 2.5rem); }
 /* Destaques sem caixas nem linhas */
 .pk-conteudo .InfoCards-module-scss-module__rsmDgW__cartoes { gap: 2.25rem clamp(1.5rem, .5rem + 2vw, 3rem); }
 .pk-conteudo .InfoCards-module-scss-module__rsmDgW__cartao { background: none; border-radius: 0; padding: 0; gap: 1.25rem; }
@@ -236,6 +232,8 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   .pk-conteudo .InfoCards-module-scss-module__rsmDgW__item + .InfoCards-module-scss-module__rsmDgW__item .InfoCards-module-scss-module__rsmDgW__cartao { border-top: 1px solid #e4e8ec; }
 }
 .pk-conteudo > section[class*="Locations-module"] { min-height: 0; padding-bottom: clamp(3.125rem, 1rem + 5vw, 6.25rem); }
+/* Imagem dos termos mais clara: véu mais leve, um pouco mais escuro atrás do título */
+.pk-conteudo .Locations-module-scss-module__DsK2fW__veu { background: linear-gradient(180deg, #0a142373 0%, #0a142359 45%, #0a142326 100%); }
 
 @media (min-width: 1024px) {
   .pk-layout { grid-template-columns: minmax(0, 1fr) 22.5rem; }
@@ -662,13 +660,17 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 .pk-hero[data-teste-veu="uniforme"] .HeroPage-module-scss-module__fLgBga__scrim { background: #0a142399; }
 
 /* Cor da card */
-.pk-hero[data-teste-card="branco"] .pk-hero__lado { background: #fff; }
-.pk-hero[data-teste-card="branco"] .pk-hero__lado .pk-hero__cta { background: var(--pk-amarelo); }
+.pk-hero[data-teste-card="amarelo"] .pk-hero__lado { background: var(--pk-amarelo); }
+.pk-hero[data-teste-card="amarelo"] .pk-hero__lado .pk-hero__cta { background: #fff; }
+.pk-hero[data-teste-card="amarelo"] :is(.pk-hero__acoes, .pk-factos--card, .pk-factos__item) { border-color: #141d2533; }
+.pk-hero[data-teste-card="amarelo"] .pk-hero__lado :is(.pk-hero__desde, .pk-factos__rotulo) { color: var(--pk-texto); }
+.pk-hero[data-teste-card="amarelo"] .pk-factos--card .pk-factos__icone { filter: brightness(0) saturate(100%); }
 .pk-hero[data-teste-card="azul-claro"] .pk-hero__lado { background: #d7dde5; }
 .pk-hero[data-teste-card="azul-escuro"] .pk-hero__lado { background: var(--pk-azul); }
 .pk-hero[data-teste-card="preto"] .pk-hero__lado { background: var(--pk-texto); }
-.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__lado :is(.HeroPage-module-scss-module__fLgBga__intro, .pk-hero__valor, .pk-hero__desde) { color: #fff; }
-.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__acoes { border-color: #ffffff33; }
+.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__lado :is(.pk-hero__valor, .pk-hero__desde, .pk-factos__rotulo, .pk-factos__valor) { color: #fff; }
+.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) :is(.pk-hero__acoes, .pk-factos--card, .pk-factos__item) { border-color: #ffffff33; }
+.pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-factos--card .pk-factos__icone { filter: brightness(0) invert(1); }
 .pk-hero:is([data-teste-card="azul-escuro"], [data-teste-card="preto"]) .pk-hero__lado .pk-hero__cta { background: var(--pk-amarelo); }
 
 /* =========================================================================

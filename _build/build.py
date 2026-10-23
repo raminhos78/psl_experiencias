@@ -344,8 +344,8 @@ def hero(p):
 <div class="{k('hero', 'scrim')}"></div></div>
 <div class="{k('hero', 'conteudo')}"><div class="{k('hero', 'linha')}"><div>
 <div class="pk-hero__topo"><span class="pk-pilula pk-pilula--amarela">{e(p['tag'])}</span></div>
-<h1 class="{k('hero', 'titulo')}" id="pk-titulo">{separar(p['titulo'], 'hero')}</h1></div>
-<div class="pk-hero__lado"><p class="{k('hero', 'intro')}">{e(p['subtitulo'])}</p><div class="pk-hero__acoes"><p class="pk-hero__preco"><span class="pk-hero__desde">Desde</span><span class="pk-hero__valor">{p['preco']} €</span></p>{botao_jornada('Reservar', BOOKING + '?pacote=' + p['slug'], 'pk-hero__cta')}</div></div></div>{factos(p, 'pk-factos--hero')}</div>
+<h1 class="{k('hero', 'titulo')}" id="pk-titulo">{separar(p['titulo'], 'hero')}</h1><p class="{k('hero', 'intro')}">{e(p['subtitulo'])}</p></div>
+<div class="pk-hero__lado">{factos(p, 'pk-factos--card')}<div class="pk-hero__acoes"><p class="pk-hero__preco"><span class="pk-hero__desde">Desde</span><span class="pk-hero__valor">{p['preco']} €</span></p>{botao_jornada('Reservar', BOOKING + '?pacote=' + p['slug'], 'pk-hero__cta')}</div></div></div></div>
 <div class="{k('hero', 'ancora')}"><div class="{k('hero', 'linha')}"><span class="{k('hero', 'pergunta')}">Podemos ajudar?</span><svg aria-hidden="true" class="{k('hero', 'balao')}" fill="none" viewBox="0 0 54 36"><path d="M42 0C48.6274 0 54 5.37258 54 12V24C54 30.6274 48.6274 36 42 36H0V12C0 5.37258 5.37258 0 12 0H42Z" fill="currentColor"/><circle class="{k('hero', 'ponto')}" cx="17.5" cy="18.5" data-ordem="0" r="3.5"/><circle class="{k('hero', 'ponto')}" cx="27.5" cy="18.5" data-ordem="1" r="3.5"/><circle class="{k('hero', 'ponto')}" cx="37.5" cy="18.5" data-ordem="2" r="3.5"/></svg><a class="{k('hero', 'botao')}" href="https://wa.me/351962025500?text={e('Olá, gostaria de informações sobre o pacote ' + p['tag'] + '.')}" rel="noopener noreferrer" target="_blank"><span class="{k('hero', 'nome')}">Falar connosco no WhatsApp</span><svg aria-hidden="true" class="{k('hero', 'glifo')}" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 2a8 8 0 016.9 12l-.3.5.6 2.2-2.3-.6-.5.3A8 8 0 1112 4zm-3.4 4c-.2 0-.5 0-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.8.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.2-.7.1l-.7 1c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5z"/></svg></a></div></div>
 </section>'''
 
@@ -668,12 +668,11 @@ def pagina_pacote(p):
     corpo = '\n'.join([
         migalha([('Início', SITE + '/'), ('Pacotes & Experiências', 'index.html'), (p['tag'], None)]),
         hero(p),
-        factos(p, 'pk-factos--fora'),
         '<div class="pk-layout">' if MOSTRAR_RESERVA else '<div class="pk-layout pk-layout--sem-reserva">',
         '<div class="pk-conteudo">',
         '<div class="pk-empilhado">',
         '<div class="pk-empilhado__grupo" data-empilhar>',
-        info_cards('', p['titulo_card'], p['destaques'], 'section-1'),
+        destaques_v2(p),
         media_checklist('section-2', 'O que está incluído', 'Tudo o que precisa para aproveitar o Porto Santo, numa única reserva.',
                         p['img_media'], p['alt_media'],
                         [('Incluído no pacote', 'icon_tickers_f1204dcdf4.svg', p['inclui'], False),

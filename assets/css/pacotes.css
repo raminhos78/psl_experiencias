@@ -764,17 +764,18 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem;
 }
 .pk2-dest__ante { margin: 0 0 .9375rem; font-family: var(--font-afacad), system-ui, sans-serif; font-size: .875rem; font-weight: 600; line-height: 1; color: var(--pk-texto); }
-.pk2-dest__h2 { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(1.875rem, 1.05rem + 3vw, 3.125rem); line-height: 1.06; letter-spacing: -.01em; max-width: 14ch; }
+.pk2-dest__h2 { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(1.875rem, 1.05rem + 3vw, 3.125rem); line-height: 1.06; letter-spacing: -.01em; max-width: 22ch; }
 .pk2-dest__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
 .pk2-dest__item {
-  display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); column-gap: .75rem; row-gap: .375rem;
+  display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: .75rem; row-gap: .375rem;
   padding: 1.375rem 0; border-top: 1px solid #141d2533;
   opacity: 0; transform: translateY(40px);
   transition: transform 1.2s var(--pk-ease) calc(.1s + var(--i, 0) * .1s), opacity .8s ease calc(.1s + var(--i, 0) * .1s);
 }
 .pk2-dest[data-dentro="true"] .pk2-dest__item { opacity: 1; transform: none; }
-.pk2-dest__num { grid-row: 1 / 3; font-family: var(--font-afacad), system-ui, sans-serif; font-size: .9375rem; font-weight: 600; line-height: 1.6; color: var(--pk-texto); }
-.pk2-dest__titulo { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(1.375rem, 1.2rem + .5vw, 1.75rem); line-height: 1.1; }
+/* Número na serifada, maior que o título do destaque e alinhado pela base com ele */
+.pk2-dest__num { grid-row: 1 / 3; align-self: baseline; font-family: var(--font-editorial), georgia, serif; font-size: clamp(1.75rem, 1.45rem + .8vw, 2.375rem); font-weight: 400; line-height: 1; color: var(--pk-amarelo); }
+.pk2-dest__titulo { align-self: baseline; margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(1.375rem, 1.2rem + .5vw, 1.75rem); line-height: 1.1; }
 .pk2-dest__texto { margin: 0; font-family: var(--font-afacad), system-ui, sans-serif; font-size: .9375rem; line-height: 1.35; color: #141d25cc; }
 @media (min-width: 768px) {
   .pk2-dest__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; }

@@ -61,7 +61,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   margin-top: clamp(1rem, .75rem + .6vw, 1.5rem); text-align: left; max-width: 36rem;
   font-size: clamp(1.0625rem, .95rem + .45vw, 1.375rem);
 }
-.pk-hero .pk-hero__cta { width: 100%; }
+.pk-hero__lado .pk-hero__cta { width: 100%; }
 @media (min-width: 768px) {
   .pk-hero__lado { padding: 1.75rem; }
   /* Tablet: título em cima, card por baixo */
@@ -72,10 +72,14 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { flex: 1 0 auto; height: auto; justify-content: flex-end; }
 .pk-hero .HeroPage-module-scss-module__fLgBga__ancora { position: absolute; top: 100%; left: 0; right: 0; }
 @media (min-width: 768px) { .pk-hero { min-height: max(62vh, 26.25rem); } }
-/* Mobile: a hero ocupa a altura do ecrã abaixo do header */
+/* Mobile: a hero ocupa o ecrã abaixo do header menos a card de baixo (altura medida em --pk-altura-card)
+   e as tabs flutuantes (3.25rem), para a card ficar à vista ao abrir a página */
 @media (max-width: 767.98px) {
   .pk-hero .HeroPage-module-scss-module__fLgBga__linha { gap: 1.5rem; }
-  .pk-hero { min-height: calc(100vh - var(--altura-header, 121px)); min-height: calc(100svh - var(--altura-header, 121px)); }
+  .pk-hero {
+    min-height: calc(100vh - var(--altura-header, 121px) - var(--pk-altura-card, 14rem) - 5.125rem);
+    min-height: calc(100svh - var(--altura-header, 121px) - var(--pk-altura-card, 14rem) - 5.125rem);
+  }
 }
 /* Tablet portrait e mobile: título e card a toda a largura */
 @media (max-width: 1023.98px) {
@@ -83,6 +87,9 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   .pk-hero .HeroPage-module-scss-module__fLgBga__linha > div:first-child { width: 100%; }
   .pk-hero .HeroPage-module-scss-module__fLgBga__titulo { max-width: none; }
   .pk-hero__lado { max-width: none; align-self: stretch; }
+  /* A card sai da hero: mostra-se a cópia logo por baixo dela */
+  .pk-hero .pk-hero__lado { display: none; }
+  .pk-hero__lado--fora { width: calc(100% - 2 * var(--pk-goteira)); margin: .9375rem auto 0; }
 }
 @media (min-width: 1024px) {
   /* Desktop: encostada ao canto inferior direito da hero */
@@ -98,6 +105,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { padding-top: min(clamp(6rem, 3rem + 6vw, 10rem), 13vh); padding-bottom: clamp(1.25rem, .5rem + 1.2vw, 2rem); }
   /* Título e card lado a lado, centrados na altura livre da hero */
   .pk-hero .pk-hero__lado { position: static; flex: none; }
+  .pk-hero__lado--fora { display: none; }
   .pk-hero .HeroPage-module-scss-module__fLgBga__linha { flex: 1 1 auto; flex-direction: row; align-items: center; justify-content: space-between; gap: 2.5rem; padding-right: 0; }
 }
 /* Rodapé da card da hero: preço à esquerda do botão Reservar (como nas cards da Jornada) */
@@ -112,7 +120,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   font-size: clamp(1.75rem, 1.55rem + .5vw, 2rem); line-height: 1; letter-spacing: -.01em; white-space: nowrap;
   color: var(--pk-texto);
 }
-.pk-hero .pk-hero__acoes .pk-hero__cta { flex: 0 1 15rem; width: auto; min-width: 0; margin-left: auto; gap: 1.5rem; }
+.pk-hero__lado .pk-hero__acoes .pk-hero__cta { flex: 0 1 15rem; width: auto; min-width: 0; margin-left: auto; gap: 1.5rem; }
 /* Tablet: destaques à esquerda, preço e botão à direita */
 @media (min-width: 768px) and (max-width: 1023.98px) {
   .pk-hero__lado { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; align-items: center; gap: 1.75rem; }
@@ -121,7 +129,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
     padding: 0 0 0 1.75rem; border-top: 0; border-left: 1px solid var(--pk-linha);
     align-self: stretch;
   }
-  .pk-hero .pk-hero__acoes .pk-hero__cta { flex: none; width: 100%; margin-left: 0; }
+  .pk-hero__lado .pk-hero__acoes .pk-hero__cta { flex: none; width: 100%; margin-left: 0; }
 }
 .pk-pilula {
   display: inline-block; font-family: var(--font-afacad), system-ui, sans-serif;

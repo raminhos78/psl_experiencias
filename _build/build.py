@@ -98,9 +98,6 @@ TESTE_CORES = False
 # Widget de reserva (coluna lateral / barra fixa no mobile). False = escondido.
 MOSTRAR_RESERVA = False
 
-NAVIO = 'Lobo Marinho · 2h15 de travessia'
-PARTIDA = 'Cais do Funchal'
-
 PACOTES = [
     {
         'slug': 'viagem-hotel',
@@ -113,7 +110,7 @@ PACOTES = [
         'img_media': 'hotel-media.jpg',
         'alt_hero': 'Quarto do hotel com acesso direto à esplanada e à praia do Porto Santo',
         'alt_media': 'Casal a almoçar numa esplanada com vista para o mar no Porto Santo',
-        'factos': ['Mínimo 1 noite (flexível)', NAVIO, PARTIDA, 'Estadia Flexível'],
+        'factos': ['Mínimo 1 noite (flexível)', 'Estadia Flexível'],
         'destaques': [
             ('Ida e volta', 'Travessia marítima Funchal ↔ Porto Santo (Ida e Volta).'),
             ('Estadia flexível', 'Estadia mínima: 1 noite (flexível).'),
@@ -146,7 +143,7 @@ PACOTES = [
         'img_media': 'jipe-media.jpg',
         'alt_hero': 'Amigos de braços no ar num jipe entre as dunas do Porto Santo',
         'alt_media': 'Passageiros de braços no ar num jipe aberto durante o tour no Porto Santo',
-        'factos': ['Day Trip · passeio de 2h30', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
+        'factos': ['Day Trip · passeio de 2h30', 'Dia Completo (Day Trip)'],
         'destaques': [
             ('Passeio de 2h30', 'Duração do passeio todo-o-terreno: 2h30.'),
             ('Jipe 4x4', 'Adrenalina e natureza pelas dunas icónicas da ilha.'),
@@ -177,7 +174,7 @@ PACOTES = [
         'img_media': 'bicicleta-media.jpg',
         'alt_hero': 'Ciclistas a pedalar no cais do Porto Santo junto ao mar',
         'alt_media': 'Avenida de palmeiras no Porto Santo com o mar ao fundo',
-        'factos': ['Day Trip · bicicleta na ilha', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
+        'factos': ['Day Trip · bicicleta na ilha', 'Dia Completo (Day Trip)'],
         'destaques': [
             ('Transferes incluídos', 'Transferes no Funchal ou no Caniço.'),
             ('Bicicleta no Porto Santo', 'A bicicleta é entregue à chegada ao Porto Santo.'),
@@ -208,7 +205,7 @@ PACOTES = [
         'img_media': 'viatura-media.jpg',
         'alt_hero': 'Casal a fotografar-se num miradouro com vista sobre a Vila Baleira',
         'alt_media': 'Vista aérea de um buggy com insufláveis cor-de-rosa no cais do Porto Santo',
-        'factos': ['1 dia ou estadia prolongada', NAVIO, PARTIDA, 'Day Trip ou Estadia Flexível'],
+        'factos': ['1 dia ou estadia prolongada', 'Day Trip ou Estadia Flexível'],
         'destaques': [
             ('Viatura a bordo', 'Transporte de viatura no convés de carga do ferry.'),
             ('Bagagem sem limite', 'Bagagem no veículo sem limite de peso.'),
@@ -239,7 +236,7 @@ PACOTES = [
         'img_media': 'excursao-media.jpg',
         'alt_hero': 'Casal a passear junto à igreja de Nossa Senhora da Piedade, na Vila Baleira',
         'alt_media': 'Casal a visitar o centro histórico da Vila Baleira',
-        'factos': ['Day Trip · excursão de 2h', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
+        'factos': ['Day Trip · excursão de 2h', 'Dia Completo (Day Trip)'],
         'destaques': [
             ('Excursão de 2h', 'Duração da excursão: 2 horas.'),
             ('Transferes incluídos', 'Transferes no Funchal ou no Caniço e no Porto Santo.'),
@@ -271,7 +268,7 @@ PACOTES = [
         'img_media': 'golfe-media.jpg',
         'alt_hero': 'Golfista com o saco de tacos no campo do Porto Santo Golfe, com a Clubhouse ao fundo',
         'alt_media': 'Golfista a caminhar no relvado do Porto Santo Golfe',
-        'factos': ['Day Trip · 18 buracos', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
+        'factos': ['Day Trip · 18 buracos', 'Dia Completo (Day Trip)'],
         'destaques': [
             ('18 buracos, 6.434 m', 'Campo de 18 buracos e 6.434 m desenhado por Severiano Ballesteros.'),
             ('Green fee incluído', 'Green fee no Campo de Golfe do Porto Santo.'),
@@ -342,14 +339,19 @@ def hero(p):
 <div class="{k('hero', 'conteudo')}"><div class="{k('hero', 'linha')}"><div>
 <div class="pk-hero__topo"><span class="pk-pilula pk-pilula--amarela">{e(p['tag'])}</span></div>
 <h1 class="{k('hero', 'titulo')}" id="pk-titulo">{separar(p['titulo'], 'hero')}</h1><p class="{k('hero', 'intro')}">{e(p['subtitulo'])}</p></div>
-<div class="pk-hero__lado">{factos(p, 'pk-factos--card')}<div class="pk-hero__acoes"><p class="pk-hero__preco"><span class="pk-hero__desde">Desde</span><span class="pk-hero__valor">{p['preco']} €</span></p>{botao_jornada('Reservar', BOOKING + '?pacote=' + p['slug'], 'pk-hero__cta')}</div></div></div></div>
+{cartao_hero(p)}</div></div>
 <div class="{k('hero', 'ancora')}"><div class="{k('hero', 'linha')}"><span class="{k('hero', 'pergunta')}">Podemos ajudar?</span><svg aria-hidden="true" class="{k('hero', 'balao')}" fill="none" viewBox="0 0 54 36"><path d="M42 0C48.6274 0 54 5.37258 54 12V24C54 30.6274 48.6274 36 42 36H0V12C0 5.37258 5.37258 0 12 0H42Z" fill="currentColor"/><circle class="{k('hero', 'ponto')}" cx="17.5" cy="18.5" data-ordem="0" r="3.5"/><circle class="{k('hero', 'ponto')}" cx="27.5" cy="18.5" data-ordem="1" r="3.5"/><circle class="{k('hero', 'ponto')}" cx="37.5" cy="18.5" data-ordem="2" r="3.5"/></svg><a class="{k('hero', 'botao')}" href="https://wa.me/351962025500?text={e('Olá, gostaria de informações sobre o pacote ' + p['tag'] + '.')}" rel="noopener noreferrer" target="_blank"><span class="{k('hero', 'nome')}">Falar connosco no WhatsApp</span><svg aria-hidden="true" class="{k('hero', 'glifo')}" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 2a8 8 0 016.9 12l-.3.5.6 2.2-2.3-.6-.5.3A8 8 0 1112 4zm-3.4 4c-.2 0-.5 0-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.8.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.2-.7.1l-.7 1c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5z"/></svg></a></div></div>
 </section>'''
 
 
+def cartao_hero(p, classe=''):
+    """Card branca com os destaques, o preço e o Reservar. Em tablet e mobile é mostrada a cópia fora da hero."""
+    return f'''<div class="pk-hero__lado{classe}">{factos(p, 'pk-factos--card')}<div class="pk-hero__acoes"><p class="pk-hero__preco"><span class="pk-hero__desde">Desde</span><span class="pk-hero__valor">{p['preco']} €</span></p>{botao_jornada('Reservar', BOOKING + '?pacote=' + p['slug'], 'pk-hero__cta')}</div></div>'''
+
+
 def factos(p, classe=''):
-    # Ícones do site (cronómetro e navio do /o-navio, morada do site, calendário do motor de reservas), a amarelo
-    rotulos = [('Duração', 'duracao'), ('Navio', 'navio'), ('Ponto de partida', 'ponto-partida'), ('Modalidade', 'modalidade')]
+    # Ícones do site (cronómetro do /o-navio, calendário do motor de reservas), a amarelo
+    rotulos = [('Duração', 'duracao'), ('Modalidade', 'modalidade')]
     itens = ''.join(
         f'<li class="pk-factos__item" style="--i:{i}"><span class="pk-factos__rotulo"><img class="pk-factos__icone" alt="" src="assets/img/icons/{ic}.svg">{r}</span>'
         f'<p class="pk-factos__valor">{e(v)}</p></li>'
@@ -610,6 +612,7 @@ def pagina_pacote(p):
     corpo = '\n'.join([
         migalha([('Início', SITE + '/'), ('Pacotes & Experiências', 'index.html'), (p['tag'], None)]),
         hero(p),
+        cartao_hero(p, ' pk-hero__lado--fora'),
         '<div class="pk-layout">' if MOSTRAR_RESERVA else '<div class="pk-layout pk-layout--sem-reserva">',
         '<div class="pk-conteudo">',
         '<div class="pk-empilhado">',

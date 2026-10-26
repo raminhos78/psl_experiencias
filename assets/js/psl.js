@@ -484,18 +484,6 @@
   }
 
   /* ---------------------------------------------------------------
-     Card por baixo da hero (tablet e mobile): mede a altura para a
-     hero encolher e a card caber no primeiro ecrã (--pk-altura-card).
-     --------------------------------------------------------------- */
-  function iniciarCardFora() {
-    var card = $('.pk-hero__lado--fora');
-    if (!card) return;
-    function medir() { document.documentElement.style.setProperty('--pk-altura-card', card.offsetHeight + 'px'); }
-    window.addEventListener('resize', medir);
-    medir();
-  }
-
-  /* ---------------------------------------------------------------
      Secção empilhada (desktop): fica presa com o fundo à vista e a
      secção seguinte passa por cima. Se couber no ecrã abaixo do header,
      prende logo abaixo dele; se for mais alta, prende pelo fundo.
@@ -598,7 +586,6 @@
   function iniciar() {
     iniciarResolucao();
     iniciarExperiencias();
-    iniciarCardFora();
     iniciarTesteCores();
     iniciarEmpilhar();
     iniciarHeader();

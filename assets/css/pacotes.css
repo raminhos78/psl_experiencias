@@ -72,13 +72,14 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 .pk-hero .HeroPage-module-scss-module__fLgBga__conteudo { flex: 1 0 auto; height: auto; justify-content: flex-end; }
 .pk-hero .HeroPage-module-scss-module__fLgBga__ancora { position: absolute; top: 100%; left: 0; right: 0; }
 @media (min-width: 768px) { .pk-hero { min-height: max(62vh, 26.25rem); } }
-/* Mobile: a hero ocupa o ecrã abaixo do header menos a card de baixo (altura medida em --pk-altura-card)
-   e as tabs flutuantes (3.25rem), para a card ficar à vista ao abrir a página */
+/* Mobile: a hero ocupa o ecrã abaixo do header menos 10rem, para o topo da card de baixo
+   espreitar acima das tabs flutuantes */
 @media (max-width: 767.98px) {
   .pk-hero .HeroPage-module-scss-module__fLgBga__linha { gap: 1.5rem; }
+  .pk-hero .HeroPage-module-scss-module__fLgBga__titulo { font-size: clamp(1.875rem, 1.25rem + 2.7vw, 2.375rem); }
   .pk-hero {
-    min-height: calc(100vh - var(--altura-header, 121px) - var(--pk-altura-card, 14rem) - 5.125rem);
-    min-height: calc(100svh - var(--altura-header, 121px) - var(--pk-altura-card, 14rem) - 5.125rem);
+    min-height: calc(100vh - var(--altura-header, 121px) - 10rem);
+    min-height: calc(100svh - var(--altura-header, 121px) - 10rem);
   }
 }
 /* Tablet portrait e mobile: título e card a toda a largura */

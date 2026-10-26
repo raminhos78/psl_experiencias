@@ -25,7 +25,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 
 /* ---------- Hero do pacote ---------- */
 .pk-hero .HeroPage-module-scss-module__fLgBga__titulo {
-  font-size: clamp(2.625rem, 1.4rem + 4.3vw, 5.125rem);
+  font-size: clamp(2.375rem, 1.4rem + 4.3vw, 5.125rem);
   line-height: 1.02;
   max-width: 16ch;
 }
@@ -240,6 +240,8 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   .pk-conteudo .InfoCards-module-scss-module__rsmDgW__item + .InfoCards-module-scss-module__rsmDgW__item .InfoCards-module-scss-module__rsmDgW__cartao { border-top: 1px solid #e4e8ec; }
 }
 .pk-conteudo > section[class*="Locations-module"] { min-height: 0; padding-bottom: clamp(3.125rem, 1rem + 5vw, 6.25rem); }
+/* Título dos termos centrado também em mobile (o site só centra a partir do tablet) */
+.pk-conteudo .Locations-module-scss-module__DsK2fW__cabecalho { text-align: center; }
 /* Imagem dos termos mais clara: véu mais leve, um pouco mais escuro atrás do título */
 .pk-conteudo .Locations-module-scss-module__DsK2fW__veu { background: linear-gradient(180deg, #0a142373 0%, #0a142359 45%, #0a142326 100%); }
 
@@ -720,7 +722,9 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem;
 }
 .pk2-dest__ante { margin: 0 0 .9375rem; font-family: var(--font-afacad), system-ui, sans-serif; font-size: .875rem; font-weight: 600; line-height: 1; color: var(--pk-texto); }
-.pk2-dest__h2 { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(2.375rem, 1.05rem + 3vw, 3.125rem); line-height: 1.06; letter-spacing: -.01em; max-width: 22ch; }
+.pk2-dest__h2 { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(2.125rem, 1.05rem + 3vw, 3.125rem); line-height: 1.06; letter-spacing: -.01em; max-width: 22ch; }
+/* Mobile: mesma escala do título dos termos ("Viaje informado…") */
+@media (max-width: 767.98px) { .pk2-dest__h2 { font-size: clamp(1.5rem, .727941rem + 3.43137vw, 2.375rem); line-height: 1.2; } }
 .pk2-dest__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
 .pk2-dest__item {
   display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: .75rem; row-gap: .375rem;

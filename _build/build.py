@@ -139,32 +139,31 @@ PACOTES = [
         'slug': 'viagem-jipe',
         'tag': 'Viagem + Jipe',
         'titulo_card': 'Quer explorar a ilha inteira sem preocupações?',
-        'titulo': 'Expedição 4x4: Descubra os segredos e miradouros do Porto Santo',
-        'subtitulo': 'Da costa sul às encostas vulcânicas do norte, navegue no Lobo Marinho e explore os recantos mais autênticos num tour todo-o-terreno guiado.',
-        'preco': '77,50',
+        'titulo': 'Expedição 4x4: As dunas e o Pico Ana Ferreira em todo-o-terreno',
+        'subtitulo': 'Navegue no Lobo Marinho e sinta a natureza do Porto Santo num passeio de jipe 4x4 de 2h30, entre as dunas da ilha e o Pico Ana Ferreira.',
+        'preco': '94,40',
         'img_hero': 'jipe-card.webp', 'pos_hero': 'center center',
         'img_media': 'jipe-media.jpg',
         'alt_hero': 'Amigos de braços no ar num jipe entre as dunas do Porto Santo',
         'alt_media': 'Passageiros de braços no ar num jipe aberto durante o tour no Porto Santo',
-        'factos': ['Day Trip · tour de 3h30', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
+        'factos': ['Day Trip · passeio de 2h30', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
         'destaques': [
-            ('Tour de 3h30', 'Duração do tour terrestre: 3h30.'),
-            ('Guia credenciado', 'Guia local credenciado (Português / Inglês).'),
-            ('Para todas as idades', 'Dificuldade: Acessível a todas as idades.'),
-            ('Sincronizado com o ferry', 'Saída e regresso coordenados com o horário do ferry.'),
+            ('Passeio de 2h30', 'Duração do passeio todo-o-terreno: 2h30.'),
+            ('Jipe 4x4', 'Adrenalina e natureza pelas dunas icónicas da ilha.'),
+            ('Pico Ana Ferreira', 'A singularidade do Pico Ana Ferreira.'),
+            ('Transferes incluídos', 'Transferes no Funchal ou no Caniço.'),
         ],
         'inclui': [
-            'Passagem marítima ida e volta no mesmo dia (Day Trip).',
-            'Circuito em jipe 4x4 pelos pontos inacessíveis por estrada convencional.',
-            'Paragens guiadas: Miradouro das Flores, Pico Castelo, Ponta da Calheta e prismas prismáticos do Pico de Ana Ferreira.',
-            'Seguro de acidentes pessoais durante a atividade terrestre.',
+            'Passagem marítima Funchal ↔ Porto Santo ↔ Funchal no mesmo dia.',
+            'Transferes no Funchal ou no Caniço.',
+            'Passeio todo-o-terreno de 2h30 em jipe 4x4, pelas dunas e pelo Pico Ana Ferreira.',
         ],
         'nao_inclui': [
-            'Almoço e consumos de cafetaria durante as paragens livres.',
+            'Refeições e consumos no Porto Santo.',
         ],
         'faq': [
-            ('Onde apanho o jipe?', 'A receção é feita diretamente no terminal de passageiros do cais do Porto Santo após o desembarque.'),
-            ('Resta tempo para ir à praia?', 'Sim, após o circuito de 3h30 dispõe de várias horas livres no centro e na praia antes do embarque de regresso.'),
+            ('Quanto tempo dura o passeio?', 'Cerca de 2h30, pelas dunas do Porto Santo e pelo Pico Ana Ferreira.'),
+            ('Resta tempo para ir à praia?', 'Sim. A saída do Funchal é de manhã e o regresso ao final do dia, por isso fica tempo livre na ilha além do passeio.'),
         ],
     },
     {
@@ -172,30 +171,30 @@ PACOTES = [
         'tag': 'Viagem + Bicicleta',
         'titulo_card': 'Quer pedalar pelos trilhos do Porto Santo?',
         'titulo': 'Porto Santo em Duas Rodas: Liberdade ativa ao longo da costa',
-        'subtitulo': 'Transporte a sua bicicleta a bordo do navio e explore as ciclovias planas e os caminhos panorâmicos ao seu próprio ritmo.',
-        'preco': '77,50',
+        'subtitulo': 'Viaje no Lobo Marinho e receba uma bicicleta à chegada ao Porto Santo para explorar a ilha ao seu ritmo, com regresso ao final do dia.',
+        'preco': '74,10',
         'img_hero': 'bicicleta-card.webp', 'pos_hero': 'center center',
         'img_media': 'bicicleta-media.jpg',
         'alt_hero': 'Ciclistas a pedalar no cais do Porto Santo junto ao mar',
         'alt_media': 'Avenida de palmeiras no Porto Santo com o mar ao fundo',
-        'factos': ['Ao seu ritmo: dia ou estadia', NAVIO, PARTIDA, 'Day Trip ou Estadia Flexível'],
+        'factos': ['Day Trip · bicicleta na ilha', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
         'destaques': [
-            ('Vaga reservada', 'Vaga reservada para bicicleta no porão do ferry.'),
-            ('9 km de ciclovia', '9 km de ciclovia plana contínua junto ao mar.'),
-            ('Liberdade total', 'Liberdade total: sem horários de transfers.'),
-            ('Estrada ou BTT', 'Opções de estrada ou percursos de montanha para BTT.'),
+            ('Transferes incluídos', 'Transferes no Funchal ou no Caniço.'),
+            ('Bicicleta no Porto Santo', 'A bicicleta é entregue à chegada ao Porto Santo.'),
+            ('Caução de 25 €', 'Caução devolvida na entrega da bicicleta em boas condições.'),
+            ('Dia completo', 'Saída do Funchal de manhã, com regresso ao final do dia.'),
         ],
         'inclui': [
-            'Bilhete de passageiro Funchal ↔ Porto Santo ida e volta.',
-            'Taxa de transporte de 1 bicicleta (convencional ou e-bike) no porão de carga.',
-            'Roteiro ciclável digital descarregável (GPX e mapa com altimetria).',
+            'Passagem marítima Funchal ↔ Porto Santo ↔ Funchal no mesmo dia.',
+            'Transferes no Funchal ou no Caniço.',
+            'Bicicleta no Porto Santo, entregue à chegada.',
         ],
         'nao_inclui': [
-            'Aluguer de equipamento ou capacete (cada passageiro deve trazer a sua própria bicicleta e equipamento).',
+            'Caução de 25 €, paga na entrega e devolvida com a bicicleta em boas condições.',
         ],
         'faq': [
-            ('As bicicletas elétricas (e-bikes) pagam taxa adicional?', 'Não, desde que cumpram os regulamentos padrão de transporte de passageiros.'),
-            ('A ciclovia começa perto do cais?', 'Sim, a ligação ciclável começa imediatamente à saída do perímetro portuário.'),
+            ('Onde recebo a bicicleta?', 'À chegada ao Porto Santo, mediante caução de 25 € e apresentação da passagem correspondente ao produto.'),
+            ('Quando devolvo a bicicleta?', 'No navio, 50 minutos antes da hora prevista da viagem de regresso ao Funchal. A caução é devolvida se a bicicleta estiver em boas condições (consulte o regulamento).'),
         ],
     },
     {
@@ -233,32 +232,32 @@ PACOTES = [
         'slug': 'viagem-excursao',
         'tag': 'Viagem + Excursão',
         'titulo_card': 'Deseja conhecer a história e os encantos da ilha?',
-        'titulo': 'Volta à Ilha Clássica: Conforto e património em autocarro panorâmico',
-        'subtitulo': 'Uma visita completa pelos marcos históricos, arquitetura tradicional e vistas emblemáticas do Porto Santo com guia oficial.',
-        'preco': '77,50',
+        'titulo': 'Volta à Ilha: Os recantos do Porto Santo numa excursão de 2 horas',
+        'subtitulo': 'Navegue no Lobo Marinho e percorra o Porto Santo numa excursão de 2 horas, da Calheta ao Pico Castelo e às Serras de Dentro e de Fora.',
+        'preco': '89,30',
         'img_hero': 'excursao-hero.jpg', 'pos_hero': 'center 35%',
         'img_media': 'excursao-media.jpg',
         'alt_hero': 'Casal a passear junto à igreja de Nossa Senhora da Piedade, na Vila Baleira',
         'alt_media': 'Casal a visitar o centro histórico da Vila Baleira',
-        'factos': ['Day Trip · circuito de 2h30', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
+        'factos': ['Day Trip · excursão de 2h', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
         'destaques': [
-            ('Circuito de 2h30', 'Duração do circuito: 2h30.'),
-            ('Autocarro climatizado', 'Transporte em autocarro de turismo climatizado.'),
-            ('Guia oficial', 'Guia intérprete oficial.'),
-            ('Para todos', 'Ideal para famílias, seniores e viagens culturais.'),
+            ('Excursão de 2h', 'Duração da excursão: 2 horas.'),
+            ('Transferes incluídos', 'Transferes no Funchal ou no Caniço e no Porto Santo.'),
+            ('Volta à ilha', 'Da Calheta ao Pico Castelo, Camacha e Portela.'),
+            ('Dia completo', 'Saída do Funchal de manhã, com regresso ao final do dia.'),
         ],
         'inclui': [
-            'Passagem de navio Funchal ↔ Porto Santo ida e volta.',
-            'Circuito turístico panorâmico de autocarro com paragens nos miradouros (Portela, Campo de Baixo, Calheta).',
-            'Visita guiada panorâmica à Vila Baleira e zona histórica.',
-            'Apoio e acompanhamento no desembarque e reembarque.',
+            'Passagem marítima Funchal ↔ Porto Santo ↔ Funchal no mesmo dia.',
+            'Transferes no Funchal ou no Caniço e no Porto Santo.',
+            'Excursão de 2 horas com partida do porto do Porto Santo.',
+            'Percurso: Calheta, Campo de Cima e Campo de Baixo, Sítio do Dragoal, Pico Castelo, Camacha, Pedregal, Serra de Dentro, Serra de Fora e Portela.',
         ],
         'nao_inclui': [
-            'Entradas em museus (como a Casa Museu Colombo), pagas localmente.',
+            'Refeições e consumos no Porto Santo.',
         ],
         'faq': [
-            ('O autocarro tem acessibilidade para cadeiras de rodas?', 'Sim, mediante aviso prévio no ato da reserva para alocação do veículo adaptado.'),
-            ('Onde termina a excursão?', 'O circuito pode terminar no centro da Vila Baleira ou junto à praia, combinando-se o local de recolha para o navio.'),
+            ('Onde começa a excursão?', 'A partida é no porto do Porto Santo, à chegada do Lobo Marinho.'),
+            ('Por onde passa a excursão?', 'Calheta, Campo de Cima e Campo de Baixo, Sítio do Dragoal, Pico Castelo, Camacha, Pedregal, Serra de Dentro, Serra de Fora e Portela, em cerca de 2 horas.'),
         ],
     },
     {
@@ -266,32 +265,30 @@ PACOTES = [
         'tag': 'Viagem + Golfe',
         'titulo_card': 'Quer desafiar os seus limites num campo de classe mundial?',
         'titulo': 'Experiência de Golfe: Um percurso de 18 buracos desenhado por Severiano Ballesteros',
-        'subtitulo': 'Atravesse o Atlântico para disputar uma ronda num dos campos mais cénicos da Europa, entre dunas douradas e falésias basálticas.',
-        'preco': '77,50',
+        'subtitulo': 'O clima seco do Porto Santo permite jogar golfe o ano inteiro, num campo de 18 buracos e 6.434 m com vistas sobre as costas Sul e Norte.',
+        'preco': '107,10',
         'img_hero': 'golfe-hero.jpg', 'pos_hero': 'center 60%',
         'img_media': 'golfe-media.jpg',
         'alt_hero': 'Golfista com o saco de tacos no campo do Porto Santo Golfe, com a Clubhouse ao fundo',
         'alt_media': 'Golfista a caminhar no relvado do Porto Santo Golfe',
         'factos': ['Day Trip · 18 buracos', NAVIO, PARTIDA, 'Dia Completo (Day Trip)'],
         'destaques': [
-            ('18 buracos, Par 72', 'Campo de 18 buracos (Par 72) desenhado por Severiano Ballesteros.'),
-            ('Saco de golfe a bordo', 'Transporte do saco de golfe incluído no navio.'),
-            ('Transfer incluído', 'Transfer porto ↔ campo de golfe incluído.'),
-            ('Vistas panorâmicas', 'Vistas panorâmicas sobre a costa norte e sul.'),
+            ('18 buracos, 6.434 m', 'Campo de 18 buracos e 6.434 m desenhado por Severiano Ballesteros.'),
+            ('Green fee incluído', 'Green fee no Campo de Golfe do Porto Santo.'),
+            ('Transferes incluídos', 'Transferes no Funchal ou no Caniço e no Porto Santo até ao Clube de Golfe.'),
+            ('Vistas panorâmicas', 'Vistas sobre a costa Sul e Norte da ilha.'),
         ],
         'inclui': [
-            'Bilhete de ferry ida e volta Funchal ↔ Porto Santo.',
-            'Transporte de equipamento desportivo/saco de tacos a bordo.',
-            'Green Fee de 18 buracos no Porto Santo Golfe.',
-            'Transfer exclusivo entre o cais do Porto Santo e a Clubhouse (ida e regresso).',
+            'Passagem marítima Funchal ↔ Porto Santo ↔ Funchal no mesmo dia.',
+            'Green fee no Campo de Golfe do Porto Santo (18 buracos).',
+            'Transferes no Funchal ou no Caniço e no Porto Santo até ao Clube de Golfe.',
         ],
         'nao_inclui': [
-            'Aluguer de buggy ou trolley (disponíveis para reserva na Clubhouse).',
-            'Consumos no restaurante da Clubhouse.',
+            'Refeições e consumos no Porto Santo.',
         ],
         'faq': [
-            ('É obrigatório apresentar certificado de handicap?', 'Sim, é recomendada a apresentação de licença da federação ou comprovativo de handicap válido.'),
-            ('O horário da partida é garantido após a chegada do navio?', 'Sim, as saídas são coordenadas com a chegada do Lobo Marinho para permitir aquecimento prévio no driving range.'),
+            ('Posso jogar golfe em qualquer altura do ano?', 'Sim. O clima seco e com pouca variação de temperatura entre as estações dá ao Porto Santo condições naturais para jogar golfe o ano inteiro.'),
+            ('Quem desenhou o campo?', 'O Campo de Golfe do Porto Santo, com 18 buracos e um percurso de 6.434 m, foi desenhado por Severiano Ballesteros.'),
         ],
     },
 ]
@@ -548,30 +545,8 @@ def jornadas(actual):
 </section>'''
 
 
-# ---------------------------------------------------------------------------
-# Versão 2 (proposta alternativa da hero e dos 3 módulos seguintes)
-# ---------------------------------------------------------------------------
-def hero_v2(p):
-    """Hero dividida: texto, destaques e preço à esquerda numa caixa branca; imagem arredondada à direita."""
-    rotulos = [('Duração', 'duracao'), ('Navio', 'navio'), ('Ponto de partida', 'ponto-partida'), ('Modalidade', 'modalidade')]
-    factos_html = ''.join(
-        f'<li class="pk2-hero__facto" style="--i:{i}"><img alt="" src="assets/img/icons/{ic}.svg"><span><span class="pk2-hero__rotulo">{r}</span>'
-        f'<span class="pk2-hero__valor">{e(v)}</span></span></li>'
-        for i, ((r, ic), v) in enumerate(zip(rotulos, p['factos'])))
-    return f'''<section aria-labelledby="pk-titulo" class="pk2-hero" data-dentro="false" id="section-0">
-<div class="pk2-hero__texto">
-<span class="pk-pilula pk-pilula--amarela">{e(p['tag'])}</span>
-<h1 class="pk2-hero__titulo" id="pk-titulo">{e(p['titulo'])}</h1>
-<p class="pk2-hero__intro">{e(p['subtitulo'])}</p>
-<ul class="pk2-hero__factos" aria-label="Destaques rápidos">{factos_html}</ul>
-<div class="pk2-hero__acoes"><p class="pk2-hero__preco"><span>Desde</span><strong>{p['preco']} €</strong></p>{botao_jornada('Reservar', BOOKING + '?pacote=' + p['slug'], 'pk2-cta')}</div>
-</div>
-<div class="pk2-hero__media"><img alt="{e(p['alt_hero'])}" decoding="async" fetchpriority="high" src="assets/img/{p['img_hero']}" style="object-position:{p['pos_hero']}"></div>
-</section>'''
-
-
 def destaques_v2(p):
-    """Destaques numerados sobre fundo escuro, título à esquerda."""
+    """Destaques numerados (vindos da antiga versão 2), título à esquerda."""
     itens = ''.join(
         f'<li class="pk2-dest__item" style="--i:{i}"><span class="pk2-dest__num">{i + 1:02d}</span>'
         f'<h3 class="pk2-dest__titulo">{e(t)}</h3><p class="pk2-dest__texto">{e(d)}</p></li>'
@@ -582,28 +557,14 @@ def destaques_v2(p):
 </section>'''
 
 
-def incluido_v2(p):
-    """Imagem à esquerda; "incluído" e "não inclui" empilhados à direita (em ecrãs pequenos, imagem por cima)."""
-    def lista(itens, marca, cls):
-        return ''.join(f'<li>{marca.format(cls=cls)}<span>{e(x)}</span></li>' for x in itens)
-    return f'''<section aria-labelledby="section-2-titulo" class="pk2-inc" data-dentro="false" id="section-2">
-<div class="pk2-inc__corpo">
-<div class="pk2-inc__media"><img alt="{e(p['alt_media'])}" loading="lazy" src="assets/img/{p['img_media']}">
-<div class="pk2-inc__cabeca"><h2 class="pk2-inc__h2" id="section-2-titulo">O que está incluído</h2><p class="pk2-inc__intro">Tudo o que precisa para aproveitar o Porto Santo, numa única reserva.</p></div></div>
-<div class="pk2-inc__paineis">
-<div class="pk2-inc__painel pk2-inc__painel--sim"><h3>Incluído no pacote</h3><ul>{lista(p['inclui'], VISTO, 'pk2-inc__marca')}</ul></div>
-<div class="pk2-inc__painel pk2-inc__painel--nao"><h3>Não inclui</h3><ul>{lista(p['nao_inclui'], CRUZ, 'pk2-inc__marca')}</ul></div>
-</div>
-</div>
-</section>'''
-
-
-def troca_versao(p, versao):
-    """Selector flutuante para comparar as duas versões da página."""
+def tabs_experiencias(p):
+    """Tabs flutuantes com as 6 experiências."""
     actual = ' aria-current="page"'
-    a = f'<a href="{p["slug"]}.html"{actual if versao == 1 else ""}>Versão 1</a>'
-    b = f'<a href="{p["slug"]}-v2.html"{actual if versao == 2 else ""}>Versão 2</a>'
-    return f'<nav class="pk-versoes" aria-label="Versões da página">{a}{b}</nav>'
+    tabs = ''.join(
+        f'<a href="{o["slug"]}.html"{actual if o["slug"] == p["slug"] else ""}>'
+        f'{e(o["tag"].removeprefix("Viagem + "))}</a>'
+        for o in PACOTES)
+    return f'<nav class="pk-experiencias" aria-label="Experiências">{tabs}</nav>'
 
 
 def k_(nomes):
@@ -645,25 +606,6 @@ def pagina(titulo, descricao, corpo, classe_body=''):
 '''
 
 
-def pagina_pacote_v2(p):
-    corpo = '\n'.join([
-        migalha([('Início', SITE + '/'), ('Pacotes & Experiências', 'index.html'), (p['tag'], None)]),
-        hero_v2(p),
-        '<div class="pk-layout pk-layout--sem-reserva pk2">',
-        '<div class="pk-conteudo">',
-        destaques_v2(p),
-        incluido_v2(p),
-        bordo_b('section-3'),
-        locais_termos('section-4'),
-        faq('section-5', p['faq'] + FAQ_COMUM),
-        '</div>',
-        '</div>',
-        jornadas(p),
-        troca_versao(p, 2),
-    ])
-    return pagina(p['tag'], p['subtitulo'], corpo, 'pk-v2')
-
-
 def pagina_pacote(p):
     corpo = '\n'.join([
         migalha([('Início', SITE + '/'), ('Pacotes & Experiências', 'index.html'), (p['tag'], None)]),
@@ -691,7 +633,7 @@ def pagina_pacote(p):
         reserva(p) if MOSTRAR_RESERVA else '',
         '</div>',
         jornadas(p),
-        troca_versao(p, 1),
+        tabs_experiencias(p),
     ])
     return pagina(p['tag'], p['subtitulo'], corpo, 'pk-tem-reserva' if MOSTRAR_RESERVA else '')
 
@@ -713,8 +655,7 @@ def main():
     (RAIZ / 'index.html').write_text(pagina_indice())
     for p in PACOTES:
         (RAIZ / f"{p['slug']}.html").write_text(pagina_pacote(p))
-        (RAIZ / f"{p['slug']}-v2.html").write_text(pagina_pacote_v2(p))
-    print('Geradas:', 'index.html', *[p['slug'] + '.html' for p in PACOTES], *[p['slug'] + '-v2.html' for p in PACOTES])
+    print('Geradas:', 'index.html', *[p['slug'] + '.html' for p in PACOTES])
 
 
 if __name__ == '__main__':

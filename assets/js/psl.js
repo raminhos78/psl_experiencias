@@ -473,6 +473,17 @@
   }
 
   /* ---------------------------------------------------------------
+     Tabs das experiências: em ecrãs estreitos a tira faz scroll;
+     centra a experiência actual para ficar à vista.
+     --------------------------------------------------------------- */
+  function iniciarExperiencias() {
+    var nav = $('.pk-experiencias');
+    var actual = nav && $('[aria-current="page"]', nav);
+    if (!actual) return;
+    nav.scrollLeft = actual.offsetLeft - (nav.clientWidth - actual.offsetWidth) / 2;
+  }
+
+  /* ---------------------------------------------------------------
      Secção empilhada (desktop): fica presa com o fundo à vista e a
      secção seguinte passa por cima. Se couber no ecrã abaixo do header,
      prende logo abaixo dele; se for mais alta, prende pelo fundo.
@@ -574,6 +585,7 @@
 
   function iniciar() {
     iniciarResolucao();
+    iniciarExperiencias();
     iniciarTesteCores();
     iniciarEmpilhar();
     iniciarHeader();

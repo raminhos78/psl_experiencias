@@ -624,6 +624,8 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 .pk-grelha .Journey-module-scss-module__y-uAEq__descricao { margin-bottom: 1.5rem; }
 /* Mais espaço entre a etiqueta do pacote e o título do cartão (índice e carrossel das jornadas) */
 :is(.pk-grelha, .pk-jornada) .Journey-module-scss-module__y-uAEq__etiqueta { margin-bottom: 1.25rem; }
+/* Título do cartão um pouco maior que no site */
+:is(.pk-grelha, .pk-jornada) .Journey-module-scss-module__y-uAEq__tituloCartao { font-size: clamp(1.5rem, 1.1rem + 1.7vw, 2.25rem); }
 .pk-grelha .Journey-module-scss-module__y-uAEq__rodape { margin-top: 0; margin-bottom: 0; }
 /* Mesmo espaço em cima (até à etiqueta) e em baixo (depois do preço e do botão) */
 .pk-grelha .Journey-module-scss-module__y-uAEq__cartao { padding-top: clamp(1.875rem, 1.2rem + 2.5vw, 2.5rem); padding-bottom: clamp(1.875rem, 1.2rem + 2.5vw, 2.5rem); }

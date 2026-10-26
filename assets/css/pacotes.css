@@ -622,10 +622,19 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
 /* Imagem + preço + botão encostados ao fundo: as imagens ficam alinhadas entre cards */
 .pk-grelha .Journey-module-scss-module__y-uAEq__moldura { margin-top: auto; }
 .pk-grelha .Journey-module-scss-module__y-uAEq__descricao { margin-bottom: 1.5rem; }
-.pk-grelha .Journey-module-scss-module__y-uAEq__rodape { margin-top: 0; }
-.pk-grelha .Journey-module-scss-module__y-uAEq__cartao:hover { background: var(--pk-amarelo); }
-.pk-grelha .Journey-module-scss-module__y-uAEq__cartao:hover .Journey-module-scss-module__y-uAEq__botao { background: #fff; }
+/* Mais espaço entre a etiqueta do pacote e o título do cartão (índice e carrossel das jornadas) */
+:is(.pk-grelha, .pk-jornada) .Journey-module-scss-module__y-uAEq__etiqueta { margin-bottom: 1.25rem; }
+.pk-grelha .Journey-module-scss-module__y-uAEq__rodape { margin-top: 0; margin-bottom: 0; }
+/* Mesmo espaço em cima (até à etiqueta) e em baixo (depois do preço e do botão) */
+.pk-grelha .Journey-module-scss-module__y-uAEq__cartao { padding-top: clamp(1.875rem, 1.2rem + 2.5vw, 2.5rem); padding-bottom: clamp(1.875rem, 1.2rem + 2.5vw, 2.5rem); }
+/* Hover a amarelo só em desktop (em mobile e tablet o toque deixava a card presa a amarelo) */
+@media (min-width: 1024px) and (hover: hover) {
+  .pk-grelha .Journey-module-scss-module__y-uAEq__cartao:hover { background: var(--pk-amarelo); }
+  .pk-grelha .Journey-module-scss-module__y-uAEq__cartao:hover .Journey-module-scss-module__y-uAEq__botao { background: #fff; }
+}
 .pk-grelha .Journey-module-scss-module__y-uAEq__imagem { object-fit: cover; }
+/* Mobile: cards com a mesma margem lateral do headline (goteira + padding de 20px da secção do título) */
+@media (max-width: 767.98px) { .pk-grelha { width: calc(100% - 2 * (var(--pk-goteira) + 1.25rem)); } }
 @media (min-width: 768px) { .pk-grelha { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1440px) { .pk-grelha { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
@@ -709,7 +718,7 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem;
 }
 .pk2-dest__ante { margin: 0 0 .9375rem; font-family: var(--font-afacad), system-ui, sans-serif; font-size: .875rem; font-weight: 600; line-height: 1; color: var(--pk-texto); }
-.pk2-dest__h2 { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(1.875rem, 1.05rem + 3vw, 3.125rem); line-height: 1.06; letter-spacing: -.01em; max-width: 22ch; }
+.pk2-dest__h2 { margin: 0; font-family: var(--font-editorial), georgia, serif; font-weight: 400; font-size: clamp(2.375rem, 1.05rem + 3vw, 3.125rem); line-height: 1.06; letter-spacing: -.01em; max-width: 22ch; }
 .pk2-dest__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
 .pk2-dest__item {
   display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: .75rem; row-gap: .375rem;

@@ -643,8 +643,7 @@ def pagina_pacote(p):
 
 def pagina_indice():
     titulo = 'Pacotes & Experiências'
-    cabeca = f'''<section aria-labelledby="section-0-titulo" class="{k('titulo', 'seccao')}" id="section-0"><h1 class="{k('titulo', 'titulo')}" id="section-0-titulo">{separar(titulo, 'titulo')}</h1><p class="{k('titulo', 'intro')}">Inspire-se e escolha
-a sua jornada ideal</p></section>'''
+    cabeca = f'''<section aria-labelledby="section-0-titulo" class="{k('titulo', 'seccao')}" id="section-0"><h1 class="{k('titulo', 'titulo')}" id="section-0-titulo">{separar(titulo, 'titulo')}</h1><p class="{k('titulo', 'intro')}">Inspire-se e escolha a sua jornada ideal</p></section>'''
     cartoes = ''.join(f'<li>{cartao_jornada(p)}</li>' for p in PACOTES)
     corpo = '\n'.join([
         migalha([('Início', SITE + '/'), (titulo, None)]),

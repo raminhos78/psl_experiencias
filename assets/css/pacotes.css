@@ -279,6 +279,10 @@ body { background: var(--pk-fundo); color: var(--pk-texto); }
   .pk-conteudo .InfoCards-module-scss-module__rsmDgW__cabecalho { max-width: 100%; }
 }
 
+/* "A experiência a bordo": imagem à direita quando imagem e texto ficam lado a lado */
+@media (min-width: 1024px) {
+  .pk-media--invertida .MediaChecklist-module-scss-module__AJx_Va__grelha { flex-direction: row-reverse; }
+}
 /* MediaChecklist: ícone do grupo "não inclui" */
 .pk-visto--nao { color: var(--pk-cinza) !important; }
 /* Os ícones do site são amarelos: na pastilha amarela passam a escuros. */
